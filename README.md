@@ -13,7 +13,7 @@
 | Silent degradation (SIM-3) | at 0.18% of traffic, hourly canaries catch it **0%** of the time; probing 10% of sessions catches it 90% |
 | Triage eval | rules first, LLM fallback behind a guard: **0 false "retry" verdicts**, 0 secret leaks ([report](triage/eval/REPORT.md)) |
 | Real findings | 4 EvalPlus issues, 2 Firefox bugs, Ollama silent truncation, 13 doc/SDK mismatches ([`real/`](real/)) |
-| CI tooling | change-based test selection, flake detection and quarantine, duration-based sharding, failure signatures, a local merge queue, all run on this repo's own suite ([`docs/ci.md`](docs/ci.md)) |
+| CI tooling | change-based test selection (12/12 injected faults caught, 0 misses), flake detection and quarantine, duration-based sharding (3 shards: 3 m 12 s vs 4 m 42 s), 10 failure signatures each reproduced, a local merge queue with bisection ([`docs/ci.md`](docs/ci.md)) |
 
 ```bash
 uv venv -p python3.14 .venv && uv pip install -p .venv -r requirements.txt && (cd ts && npm ci)
@@ -279,6 +279,33 @@ An LLM alone is unsafe at this size; the guard holds false "retry" at 0 for both
 
 Pending (need a keyed account): AN-02, OA-05, OA-11 (`live_setup` in each `pack.yaml`, run with `--keyed --yes`); AN-26 after 2026-11-30.
 
+## CI tooling
+
+`casebook/ci/` runs this repo's own suite: selection, history, reruns, sharding, failure signatures, and a merge queue. Every number below comes from running the suite or real git on this machine; raw results are in [`ci/reports/`](ci/reports/).
+
+```text
+CI-01  infra        Y  port already in use (fixed port collided)            reproduced: bind a listening port twice
+CI-02  flake        Y  temp-dir cleanup raced a child process              reproduced: rmdir after a late write
+CI-03  infra        Y  subprocess exceeded its timeout                      reproduced: child sleeps past timeout
+CI-04  environment  Y  DNS lookup failed (test reached an external host)    reproduced: resolve a .invalid host
+CI-05  dependency   N  Node package missing                                 reproduced: require() an uninstalled package
+CI-06  dependency   N  Python module missing                                reproduced: import an uninstalled module
+CI-07  regression   N  test file doesn't import (syntax error)              reproduced: broken test file
+CI-08  regression   N  generated docs/test-matrix.md is stale               reproduced: git diff --exit-code on the file
+CI-09  regression   N  broken doc link or moved line link                   reproduced: tools/check_docs.py on a bad link
+CI-10  regression   N  assertion fails on every attempt                     reproduced: wrong expectation on rules.classify
+CI-00  unknown      C  no signature: rerun once, then add one
+```
+
+| Feature | Measured |
+|---|---|
+| Test selection (`ci select`) | A one-module change runs a median 14% of suite time; 13 core modules still need over 75%. Fault injection into 12 modules: **12/12 caught by the selected tests, 0 caught only by unselected tests**. The first run found a test gap (policy retry trace untested) and two hidden test dependencies; both fixed |
+| Flakes and quarantine (`ci test`, `ci quarantine`) | 5 full runs on one commit, 3,130 test executions: no failures, no flips. A test built to flake is caught: fails, passes on rerun, reported as flaky, build stays green |
+| Sharding (`ci shard`, `ci-shards.yml`) | 3 shards on GitHub Actions finished within 6 s of each other; workflow 3 m 12 s vs 4 m 42 s single job, for about 1.7× the runner time |
+| Merge queue (`casebook/ci/mergequeue.py`) | 16 branches on real git: batch 4 needs 4 test runs instead of 13 when nothing fails; with 2 breaking branches and 1 conflict, batch 8 needs 14 vs 15 serial. Base passes its tests after every run |
+
+Not here: Kubernetes or multi-cloud runners, cluster load shedding, GitHub's merge queue (needs an organisation-owned repo).
+
 ## Documentation
 
 | Doc | For |
@@ -302,6 +329,8 @@ uv venv -p python3.14 .venv && uv pip install -p .venv -r requirements.txt
 .venv/bin/python -m casebook repro all --fast
 .venv/bin/python -m casebook redact ticket.txt --provider anthropic   # redact + packet + verdict
 .venv/bin/python -m casebook.mockserver --port 8787 # header X-Casebook-Pack selects a fault
+.venv/bin/python -m casebook ci select --base origin/main --explain   # tests the change can affect, and why
+.venv/bin/python -m casebook ci test --base origin/main               # run them, rerun failures, classify the rest
 ```
 
 ## Layout
@@ -328,7 +357,7 @@ casebook/
   ci/            test selection, flake history + quarantine, sharding, failure signatures, merge queue
 ci/              quarantine list, recorded durations, experiment reports
 faults/<provider>/<ID>-<slug>/  pack.yaml  expected.json  fix.md
-tests/
+tests/           incl. tests/ci_cases/: small failures the signature tests reproduce
 ```
 
 ## Provenance rules
@@ -338,7 +367,7 @@ tests/
 - Rules matching message text (AN-02, AN-12, OA-08, OA-11) report `confidence: message-prefix`. AN-05 is a header heuristic.
 - Packs run against the mock unless a `live/` capture exists.
 - Not covered: packs needing a real enterprise tenant, sudo/MDM, Windows, or paid keys.
-- Corrections: AG-16 (no loop against a dual-era server), AG-18 (the SDK does send `X-Accel-Buffering`), AN-14 (owner is the customer), 2 hand-written doc URLs that returned 404, and LLM errors once scored as safe abstains.
+- Corrections: AG-16 (no loop against a dual-era server), AG-18 (the SDK does send `X-Accel-Buffering`), AN-14 (owner is the customer), 2 hand-written doc URLs that returned 404, LLM errors once scored as safe abstains, and two test dependencies the import graph missed (found by fault injection).
 
 ## Sources
 
