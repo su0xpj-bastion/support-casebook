@@ -1,0 +1,318 @@
+{
+  "summary": {
+    "modules": 51,
+    "full_suite_seconds": 222.8,
+    "median_share": 0.136,
+    "modules_under_25pct": 28,
+    "modules_over_75pct": 13,
+    "note": "tests/test_ci_graph.py duration measured once (20.07 s), added to ci/durations.json by hand"
+  },
+  "modules": [
+    {
+      "module": "casebook/cli.py",
+      "test_files": 0,
+      "est_seconds": 0,
+      "share_of_full": 0.0
+    },
+    {
+      "module": "casebook/gen/runbooks.py",
+      "test_files": 0,
+      "est_seconds": 0,
+      "share_of_full": 0.0
+    },
+    {
+      "module": "casebook/sims/artifacts.py",
+      "test_files": 0,
+      "est_seconds": 0,
+      "share_of_full": 0.0
+    },
+    {
+      "module": "casebook/triage/evaluate.py",
+      "test_files": 0,
+      "est_seconds": 0,
+      "share_of_full": 0.0
+    },
+    {
+      "module": "casebook/exposure.py",
+      "test_files": 2,
+      "est_seconds": 20.1,
+      "share_of_full": 0.09
+    },
+    {
+      "module": "casebook/live.py",
+      "test_files": 2,
+      "est_seconds": 20.1,
+      "share_of_full": 0.09
+    },
+    {
+      "module": "casebook/triage/__init__.py",
+      "test_files": 2,
+      "est_seconds": 20.1,
+      "share_of_full": 0.09
+    },
+    {
+      "module": "casebook/triage/classify.py",
+      "test_files": 2,
+      "est_seconds": 20.1,
+      "share_of_full": 0.09
+    },
+    {
+      "module": "casebook/triage/dataset.py",
+      "test_files": 2,
+      "est_seconds": 20.1,
+      "share_of_full": 0.09
+    },
+    {
+      "module": "casebook/scenarios.py",
+      "test_files": 3,
+      "est_seconds": 20.3,
+      "share_of_full": 0.091
+    },
+    {
+      "module": "casebook/identity/__init__.py",
+      "test_files": 4,
+      "est_seconds": 22.3,
+      "share_of_full": 0.1
+    },
+    {
+      "module": "casebook/identity/idp.py",
+      "test_files": 4,
+      "est_seconds": 22.3,
+      "share_of_full": 0.1
+    },
+    {
+      "module": "casebook/identity/keys.py",
+      "test_files": 4,
+      "est_seconds": 22.3,
+      "share_of_full": 0.1
+    },
+    {
+      "module": "casebook/identity/oauth.py",
+      "test_files": 4,
+      "est_seconds": 22.3,
+      "share_of_full": 0.1
+    },
+    {
+      "module": "casebook/identity/scenarios.py",
+      "test_files": 4,
+      "est_seconds": 22.3,
+      "share_of_full": 0.1
+    },
+    {
+      "module": "casebook/identity/scim.py",
+      "test_files": 4,
+      "est_seconds": 22.3,
+      "share_of_full": 0.1
+    },
+    {
+      "module": "casebook/identity/sp.py",
+      "test_files": 4,
+      "est_seconds": 22.3,
+      "share_of_full": 0.1
+    },
+    {
+      "module": "casebook/identity/wif.py",
+      "test_files": 4,
+      "est_seconds": 22.3,
+      "share_of_full": 0.1
+    },
+    {
+      "module": "casebook/agent_scenarios.py",
+      "test_files": 4,
+      "est_seconds": 24.4,
+      "share_of_full": 0.11
+    },
+    {
+      "module": "casebook/agent_sdk_scenarios.py",
+      "test_files": 4,
+      "est_seconds": 24.4,
+      "share_of_full": 0.11
+    },
+    {
+      "module": "casebook/mcp_lab/__init__.py",
+      "test_files": 4,
+      "est_seconds": 30.3,
+      "share_of_full": 0.136
+    },
+    {
+      "module": "casebook/mcp_lab/auth.py",
+      "test_files": 4,
+      "est_seconds": 30.3,
+      "share_of_full": 0.136
+    },
+    {
+      "module": "casebook/mcp_lab/oauth_probe.py",
+      "test_files": 4,
+      "est_seconds": 30.3,
+      "share_of_full": 0.136
+    },
+    {
+      "module": "casebook/mcp_lab/proxy.py",
+      "test_files": 4,
+      "est_seconds": 30.3,
+      "share_of_full": 0.136
+    },
+    {
+      "module": "casebook/mcp_lab/raw_server.py",
+      "test_files": 4,
+      "est_seconds": 30.3,
+      "share_of_full": 0.136
+    },
+    {
+      "module": "casebook/mcp_lab/scenarios.py",
+      "test_files": 4,
+      "est_seconds": 30.3,
+      "share_of_full": 0.136
+    },
+    {
+      "module": "casebook/mcp_lab/servers.py",
+      "test_files": 4,
+      "est_seconds": 30.3,
+      "share_of_full": 0.136
+    },
+    {
+      "module": "casebook/ts_repro.py",
+      "test_files": 2,
+      "est_seconds": 50.8,
+      "share_of_full": 0.228
+    },
+    {
+      "module": "casebook/gen/__init__.py",
+      "test_files": 5,
+      "est_seconds": 63.0,
+      "share_of_full": 0.283
+    },
+    {
+      "module": "casebook/gen/updates.py",
+      "test_files": 5,
+      "est_seconds": 63.0,
+      "share_of_full": 0.283
+    },
+    {
+      "module": "casebook/sims/s1_outage.py",
+      "test_files": 4,
+      "est_seconds": 63.0,
+      "share_of_full": 0.283
+    },
+    {
+      "module": "casebook/sims/s2_retry_storm.py",
+      "test_files": 4,
+      "est_seconds": 63.0,
+      "share_of_full": 0.283
+    },
+    {
+      "module": "casebook/client_lab/__init__.py",
+      "test_files": 4,
+      "est_seconds": 65.6,
+      "share_of_full": 0.294
+    },
+    {
+      "module": "casebook/client_lab/claude_cli.py",
+      "test_files": 4,
+      "est_seconds": 65.6,
+      "share_of_full": 0.294
+    },
+    {
+      "module": "casebook/client_lab/codex_cli.py",
+      "test_files": 4,
+      "est_seconds": 65.6,
+      "share_of_full": 0.294
+    },
+    {
+      "module": "casebook/client_lab/collector.py",
+      "test_files": 4,
+      "est_seconds": 65.6,
+      "share_of_full": 0.294
+    },
+    {
+      "module": "casebook/client_lab/scenarios.py",
+      "test_files": 4,
+      "est_seconds": 65.6,
+      "share_of_full": 0.294
+    },
+    {
+      "module": "casebook/client_lab/tls.py",
+      "test_files": 4,
+      "est_seconds": 65.6,
+      "share_of_full": 0.294
+    },
+    {
+      "module": "casebook/checks.py",
+      "test_files": 10,
+      "est_seconds": 169.3,
+      "share_of_full": 0.76
+    },
+    {
+      "module": "casebook/mock_agents.py",
+      "test_files": 10,
+      "est_seconds": 169.3,
+      "share_of_full": 0.76
+    },
+    {
+      "module": "casebook/mockserver.py",
+      "test_files": 10,
+      "est_seconds": 169.3,
+      "share_of_full": 0.76
+    },
+    {
+      "module": "casebook/policy.py",
+      "test_files": 10,
+      "est_seconds": 169.3,
+      "share_of_full": 0.76
+    },
+    {
+      "module": "casebook/repro.py",
+      "test_files": 10,
+      "est_seconds": 169.3,
+      "share_of_full": 0.76
+    },
+    {
+      "module": "casebook/sims/__init__.py",
+      "test_files": 10,
+      "est_seconds": 169.3,
+      "share_of_full": 0.76
+    },
+    {
+      "module": "casebook/sims/s3_silent_degradation.py",
+      "test_files": 10,
+      "est_seconds": 169.3,
+      "share_of_full": 0.76
+    },
+    {
+      "module": "casebook/models.py",
+      "test_files": 11,
+      "est_seconds": 169.4,
+      "share_of_full": 0.76
+    },
+    {
+      "module": "casebook/packet.py",
+      "test_files": 12,
+      "est_seconds": 169.4,
+      "share_of_full": 0.76
+    },
+    {
+      "module": "casebook/redact.py",
+      "test_files": 14,
+      "est_seconds": 169.4,
+      "share_of_full": 0.76
+    },
+    {
+      "module": "casebook/packs.py",
+      "test_files": 12,
+      "est_seconds": 171.5,
+      "share_of_full": 0.77
+    },
+    {
+      "module": "casebook/rules.py",
+      "test_files": 13,
+      "est_seconds": 210.7,
+      "share_of_full": 0.946
+    },
+    {
+      "module": "casebook/__init__.py",
+      "test_files": 18,
+      "est_seconds": 222.8,
+      "share_of_full": 1.0
+    }
+  ]
+}

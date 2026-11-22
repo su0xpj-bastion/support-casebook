@@ -1,0 +1,35 @@
+{
+  "status": 200,
+  "mode": "success",
+  "provenance": {
+    "refusal_field": "doc-verbatim",
+    "LengthFinishReasonError": "live-captured",
+    "texts": "synthesized"
+  },
+  "cases": {
+    "refusal": {
+      "body_merge": {
+        "choices": {
+          "message": {
+            "role": "assistant",
+            "content": null,
+            "refusal": "I can't help with that request."
+          },
+          "finish_reason": "stop"
+        }
+      }
+    },
+    "length": {
+      "body_merge": {
+        "choices": {
+          "message": {
+            "role": "assistant",
+            "content": "{\"claim_id\": \"4411\", \"cau"
+          },
+          "finish_reason": "length"
+        }
+      }
+    }
+  },
+  "notes": "openai 3.51.0 .parse(): refusal -> parsed None + message.refusal; finish_reason=length -> LengthFinishReasonError."
+}

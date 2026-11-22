@@ -1,0 +1,33 @@
+{
+  "naive": {
+    "strategy": "naive",
+    "logical_calls": 360,
+    "requests_sent": 3582,
+    "amplification": 9.95,
+    "success_rate": 0.006,
+    "success_rate_after_capacity_restored": 0.0,
+    "recovery_s_after_capacity_restored": null
+  },
+  "sdk_default": {
+    "strategy": "sdk_default",
+    "logical_calls": 360,
+    "requests_sent": 630,
+    "amplification": 1.75,
+    "success_rate": 0.808,
+    "success_rate_after_capacity_restored": 0.915,
+    "recovery_s_after_capacity_restored": 5.0
+  },
+  "budgeted": {
+    "strategy": "budgeted",
+    "logical_calls": 360,
+    "requests_sent": 376,
+    "amplification": 1.04,
+    "success_rate": 0.572,
+    "success_rate_after_capacity_restored": 0.85,
+    "recovery_s_after_capacity_restored": 1.0
+  },
+  "finding": {
+    "cls": "sim.retry_amplification",
+    "detail": "same demand, capacity 10 rps for 3s then 60 rps: amplification naive 9.95x, SDK default 1.75x, budgeted 1.04x; recovery after capacity returned: naive never (in 6s), SDK 5.0s, budgeted 1.0s; overall success naive 0.006, SDK 0.808, budgeted 0.572 (the budget trades incident-time success for faster recovery)"
+  }
+}

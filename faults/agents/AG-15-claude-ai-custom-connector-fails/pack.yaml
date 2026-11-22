@@ -1,0 +1,20 @@
+id: AG-15
+kind: anomaly
+title: 'claude.ai custom connector fails: private host, non-443 port, missing OAuth
+  callback'
+provider: anthropic
+surface: agent
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- full message history of the failing turn
+- tools array
+- request-ids
+docs:
+- https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp
+expect_requests: {}
+runs_real_sdk: null

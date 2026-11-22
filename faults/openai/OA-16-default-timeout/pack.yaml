@@ -1,0 +1,21 @@
+id: OA-16
+kind: client
+title: Long call killed at exactly 10 minutes (SDK default timeout)
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+retry: C
+verdict:
+  cls: client.timeout_default
+looks_like:
+- OA-14
+- AN-11
+evidence_required:
+- elapsed time at failure
+- SDK timeout setting
+docs:
+- https://github.com/openai/openai-python
+- https://platform.claude.com/docs/en/cli-sdks-libraries/sdks/python
+expect_requests:
+  python_sdk_default: 0

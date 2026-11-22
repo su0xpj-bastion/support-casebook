@@ -1,0 +1,26 @@
+id: AN-21
+kind: anomaly
+title: 'SDK major upgrade: temperature= is a TypeError in the SDK, and a 400 under anthropic-version 2026-10-21'
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2
+retry: N
+verdict:
+  cls: migration.api_version
+looks_like:
+- AN-18
+evidence_required:
+- anthropic-version request header
+- SDK version
+- lockfile diff
+docs:
+- https://platform.claude.com/docs/en/cli-sdks-libraries/sdks/python
+- https://platform.claude.com/docs/en/about-claude/model-deprecations
+expect_requests:
+  python_sdk_default: 3
+live_findings:
+- date: '2026-11-19'
+  observed: anthropic 2.9.0 Messages.create() has no temperature parameter — passing it raises TypeError locally, so nothing reaches the API and there is no request-id.
+  meaning: the same migration shows up two ways — a Python TypeError for SDK users, an API 400 for raw-HTTP / extra_body / other-language callers.

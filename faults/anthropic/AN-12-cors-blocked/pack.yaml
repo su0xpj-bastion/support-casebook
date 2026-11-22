@@ -1,0 +1,25 @@
+id: AN-12
+kind: error
+title: Browser app gets 401 with a valid key (CORS blocked for the org)
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+retry: N
+verdict:
+  cls: auth.cors_blocked
+  retryable: N
+  owner: customer
+looks_like:
+- AN-13
+evidence_required:
+- error.message
+- Origin header
+- org has ZDR / Compliance API enabled
+docs:
+- https://platform.claude.com/docs/en/api/errors
+- https://platform.claude.com/docs/en/manage-claude/compliance-api-access
+expect_requests:
+  python_sdk_default: 1
+  policy: 1
+  ts_sdk_default: 1

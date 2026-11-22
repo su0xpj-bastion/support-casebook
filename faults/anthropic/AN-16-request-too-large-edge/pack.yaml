@@ -1,0 +1,31 @@
+id: AN-16
+kind: error
+title: '413 from the edge: HTML body, no request-id'
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2
+retry: N
+verdict:
+  cls: request.too_large
+  retryable: N
+  owner: customer
+looks_like:
+- AN-17 (prompt too long 400)
+evidence_required:
+- status
+- content-type text/html
+- no request-id
+- payload size
+docs:
+- https://platform.claude.com/docs/en/api/errors
+expect_requests:
+  python_sdk_default: 1
+  policy: 1
+  ts_sdk_default: 1
+live_findings:
+- date: '2026-11-19'
+  observed: 33 MiB body with an invalid key returned 401 authentication_error (JSON, with request-id), not a 413 HTML page.
+  meaning: Either authentication is checked before the size limit, or the edge limit is above 33 MiB. A customer with a bad key and an oversized payload sees 401 first.
+  next: keyed capture (valid key, 33 MiB) separates the two explanations.

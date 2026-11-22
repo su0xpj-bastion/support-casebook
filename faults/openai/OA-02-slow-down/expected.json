@@ -1,0 +1,24 @@
+{
+  "status": 429,
+  "headers": {
+    "retry-after": "1",
+    "x-ratelimit-remaining-requests": "420",
+    "x-ratelimit-remaining-tokens": "1650000"
+  },
+  "body": {
+    "error": {
+      "message": "Please reduce your request rate and retry.",
+      "type": "rate_limit_error",
+      "param": null,
+      "code": "slow_down"
+    }
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.type": "doc-verbatim",
+    "error.code": "doc-verbatim",
+    "error.message": "synthesized",
+    "headers.values": "synthesized"
+  },
+  "notes": "Docs: slow_down can fire even under RPM/TPM; past 1M input TPM ramp by <=50% per 15 minutes."
+}

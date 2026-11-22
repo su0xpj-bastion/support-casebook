@@ -1,0 +1,28 @@
+id: OA-11
+kind: error
+title: 400 Invalid service_tier after an admin restricts tiers (even with auto)
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+live_tier: L2
+retry: N
+verdict:
+  cls: config.service_tier
+  retryable: N
+  owner: customer-admin
+request:
+  service_tier: auto
+looks_like:
+- request.invalid
+evidence_required:
+- error.message
+- request service_tier
+- project allowed tiers
+docs:
+- https://developers.openai.com/api/docs/guides/error-codes
+expect_requests:
+  python_sdk_default: 1
+  policy: 1
+  ts_sdk_default: 1
+live_setup: "In the OpenAI project settings, restrict allowed service tiers so 'auto'/'default' is not allowed (if the dashboard offers it), and export that project's key as OPENAI_API_KEY."

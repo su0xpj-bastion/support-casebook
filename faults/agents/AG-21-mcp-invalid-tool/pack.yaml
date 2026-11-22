@@ -1,0 +1,20 @@
+id: AG-21
+kind: anomaly
+title: One malformed tool definition hides every tool
+provider: mcp
+surface: mcp
+endpoint: /mcp
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- client SDK + version
+- server SDK + version
+- negotiated protocol revision
+- every proxy between them
+docs:
+- https://modelcontextprotocol.io/specification/2026-07-28/server/tools
+expect_requests: {}
+runs_real_sdk: mcp (Python) 2.3.0 and @modelcontextprotocol/sdk (TypeScript) 1.32.2

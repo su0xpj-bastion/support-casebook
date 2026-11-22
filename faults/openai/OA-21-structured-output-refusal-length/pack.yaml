@@ -1,0 +1,19 @@
+id: OA-21
+kind: anomaly
+title: 'Structured output: refusal parses to None; length raises before parsing'
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+live_tier: L2
+retry: N
+verdict:
+  cls: output.refusal_or_length
+looks_like: []
+evidence_required:
+- message.refusal
+- finish_reason
+docs:
+- https://developers.openai.com/api/docs/guides/structured-outputs
+expect_requests:
+  python_sdk_default: 2

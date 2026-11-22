@@ -1,0 +1,21 @@
+id: AN-50
+kind: anomaly
+title: 'Corporate TLS inspection: SELF_SIGNED_CERT_IN_CHAIN; NODE_EXTRA_CA_CERTS fixes
+  it'
+provider: anthropic
+surface: claude_code
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- CLI version
+- auth method in use
+- proxy / CA env
+- settings layer (managed/user/project)
+docs:
+- https://code.claude.com/docs/en/network-config
+expect_requests: {}
+runs_real_sdk: Claude Code 2.1.329 (bundled with claude-agent-sdk)

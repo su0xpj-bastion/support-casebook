@@ -1,0 +1,20 @@
+id: OA-19
+kind: anomaly
+title: 'Background stream dropped: resume with starting_after'
+provider: openai
+surface: api
+endpoint: /v1/responses
+tier: L1
+live_tier: L2
+retry: Y
+verdict:
+  cls: stream.resumed
+looks_like:
+- OA-18
+evidence_required:
+- response id
+- last sequence_number
+docs:
+- https://developers.openai.com/api/docs/guides/background
+expect_requests:
+  python_sdk_default: 2

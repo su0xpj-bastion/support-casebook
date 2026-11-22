@@ -1,0 +1,23 @@
+id: OA-39
+kind: anomaly
+title: WIF fails after key rotation (uploaded JWKS stale / old key removed early)
+provider: openai
+surface: identity
+endpoint: '-'
+tier: L1
+live_tier: L3 (needs a real Claude/ChatGPT/OpenAI enterprise tenant)
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- decoded assertion / token claims
+- IdP app assignment and groups
+- SP configuration
+- timestamps
+docs:
+- https://developers.openai.com/api/docs/guides/workload-identity-federation
+scope: vendor-policy
+expect_requests: {}
+modelled_not_real: Policy decisions are casebook's model of the vendor docs; crypto
+  (signxml, PyJWT) is real. Not Anthropic's or OpenAI's systems.

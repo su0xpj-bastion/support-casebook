@@ -1,0 +1,17 @@
+{
+  "status": 413,
+  "mode": "raw",
+  "omit_base_headers": true,
+  "content_type": "text/html",
+  "headers": {
+    "server": "cloudflare"
+  },
+  "raw_body": "<html><head><title>413 Request Entity Too Large</title></head><body><center><h1>413 Request Entity Too Large</h1></center><hr><center>cloudflare</center></body></html>",
+  "body": null,
+  "provenance": {
+    "status": "doc-verbatim",
+    "rejected_at_edge": "doc-verbatim",
+    "raw_body": "synthesized"
+  },
+  "notes": "Docs: 413 is returned by Cloudflare before the request reaches the API, so there is no API request-id to give support."
+}

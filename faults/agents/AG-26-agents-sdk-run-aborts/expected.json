@@ -1,0 +1,7 @@
+{
+  "status": 200,
+  "mode": "always_tool_call",
+  "provenance": {
+    "exceptions": "live-captured"
+  }
+}

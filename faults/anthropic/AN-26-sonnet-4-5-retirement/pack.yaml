@@ -1,0 +1,25 @@
+id: AN-26
+kind: anomaly
+title: claude-sonnet-4-5 calls fail from 2026-11-30
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2 (capture on 2026-12-01)
+retry: N
+verdict:
+  cls: model.retired
+looks_like:
+- AN-27 (works on Bedrock)
+evidence_required:
+- model id
+- date
+- platform (1P vs Bedrock/Vertex)
+docs:
+- https://platform.claude.com/docs/en/about-claude/model-deprecations
+expect_requests:
+  python_sdk_default: 3
+live_findings:
+- date: '2026-11-19'
+  observed: "anthropic 2.9.0 emits DeprecationWarning: The model 'claude-sonnet-4-5-20250929' is deprecated and will reach end-of-life on November 30th, 2026."
+  meaning: Python ignores DeprecationWarning by default outside __main__, so services importing the SDK rarely surface it; tell customers to run with -W default::DeprecationWarning (or check logs) before the date.

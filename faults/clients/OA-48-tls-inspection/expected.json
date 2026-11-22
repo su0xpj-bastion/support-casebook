@@ -1,0 +1,10 @@
+{
+  "status": null,
+  "mode": "generic",
+  "provenance": {
+    "symptom": "live-captured",
+    "fix_vars": "doc-verbatim",
+    "ca": "synthesized"
+  },
+  "notes": "ca: synthesized (test CA)"
+}

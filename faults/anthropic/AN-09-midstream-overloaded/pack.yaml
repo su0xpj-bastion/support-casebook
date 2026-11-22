@@ -1,0 +1,28 @@
+id: AN-09
+kind: error
+title: 'Stream dies after HTTP 200 with event: error (overloaded)'
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+retry: Y
+verdict:
+  cls: provider.capacity
+  retryable: Y
+  owner: provider
+request:
+  stream: true
+looks_like:
+- AN-08
+- network.connection
+evidence_required:
+- 'SSE event: error'
+- partial output
+- request-id
+docs:
+- https://platform.claude.com/docs/en/build-with-claude/streaming
+- https://platform.claude.com/docs/en/api/errors
+expect_requests:
+  python_sdk_default: 1
+  policy: null
+  ts_sdk_default: 1

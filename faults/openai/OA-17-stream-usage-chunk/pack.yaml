@@ -1,0 +1,24 @@
+id: OA-17
+kind: anomaly
+title: Stream crashes on chunk.choices[0]; usage missing after interruption
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+retry: '-'
+verdict:
+  cls: stream.usage_lost
+request:
+  stream: true
+  stream_options:
+    include_usage: true
+looks_like: []
+evidence_required:
+- stream_options
+- final chunk
+- '[DONE] received'
+docs:
+- https://developers.openai.com/api/docs/guides/streaming-responses
+- https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create
+expect_requests:
+  python_sdk_default: 3

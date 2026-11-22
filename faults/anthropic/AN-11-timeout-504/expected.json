@@ -1,0 +1,18 @@
+{
+  "status": 504,
+  "headers": {},
+  "body": {
+    "type": "error",
+    "error": {
+      "type": "timeout_error",
+      "message": "Request timed out."
+    },
+    "request_id": "{request_id}"
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.type": "doc-verbatim",
+    "error.message": "synthesized"
+  },
+  "notes": "Docs: 504 timeout_error (can also arrive as 500). Each SDK retry is a new request with a new request-id."
+}

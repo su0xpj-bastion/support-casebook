@@ -1,0 +1,36 @@
+name: ci-shards
+# The same suite split into 3 shards by recorded file durations (ci/durations.json), to compare
+# wall time with the single-job ci workflow.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.14"}
+      - id: plan
+        run: |
+          pip install -r requirements.txt
+          echo "matrix=$(python -m casebook ci shard -n 3 --matrix)" >> "$GITHUB_OUTPUT"
+          python -m casebook ci shard -n 3
+  test:
+    needs: plan
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.14"}
+      - uses: actions/setup-node@v4
+        with: {node-version: "22"}
+      - run: pip install -r requirements.txt
+      - run: cd ts && npm ci
+      - run: python -m casebook ci test --shard "${{ matrix.shard }}" --report ci-report.json

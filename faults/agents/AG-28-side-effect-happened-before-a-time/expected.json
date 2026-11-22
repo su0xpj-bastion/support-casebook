@@ -1,0 +1,9 @@
+{
+  "status": 200,
+  "mode": "refund_flow",
+  "provenance": {
+    "no_idempotency_key": "doc-verbatim",
+    "playbook": "synthesized"
+  },
+  "delay_s": 2
+}

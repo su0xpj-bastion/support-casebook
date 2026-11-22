@@ -1,0 +1,29 @@
+id: AN-08
+title: 529 overloaded_error during peak
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+retry: Y
+verdict:
+  cls: provider.capacity
+  retryable: Y
+  owner: provider
+looks_like:
+- AN-04
+- AN-11
+evidence_required:
+- http.status
+- error.type
+- request-id
+- status.claude.com
+docs:
+- https://platform.claude.com/docs/en/api/errors
+- https://platform.claude.com/docs/en/build-with-claude/streaming
+sdk_exception:
+  python: anthropic.OverloadedError
+kind: error
+expect_requests:
+  python_sdk_default: 3
+  policy: 3
+  ts_sdk_default: 3

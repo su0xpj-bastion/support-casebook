@@ -1,0 +1,25 @@
+id: AN-15
+kind: error
+title: 402 billing_error
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+retry: N
+verdict:
+  cls: billing.payment
+  retryable: N
+  owner: customer-admin
+looks_like:
+- AN-01
+- AN-02
+evidence_required:
+- status
+- error.type
+- billing channel (Console / AWS Marketplace)
+docs:
+- https://platform.claude.com/docs/en/api/errors
+expect_requests:
+  python_sdk_default: 1
+  policy: 1
+  ts_sdk_default: 1

@@ -1,0 +1,19 @@
+{
+  "status": 429,
+  "headers": {},
+  "body": {
+    "error": {
+      "message": "Your organization has reached its approved monthly usage limit.",
+      "type": "insufficient_quota",
+      "param": null,
+      "code": "organization_usage_limit_exceeded"
+    }
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.code": "doc-verbatim",
+    "error.type": "doc-verbatim",
+    "error.message": "synthesized"
+  },
+  "notes": "Approved usage limit is assigned by OpenAI per usage tier; distinct from the customer-set spend limit."
+}

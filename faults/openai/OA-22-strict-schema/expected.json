@@ -1,0 +1,8 @@
+{
+  "status": null,
+  "mode": "client",
+  "provenance": {
+    "rules": "doc-verbatim"
+  },
+  "notes": "Docs: strict requires additionalProperties:false and all fields required (optional = nullable). Live: whether the API rejects or silently downgrades is to be captured at L2."
+}

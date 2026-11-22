@@ -1,0 +1,32 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}            # selection diffs against the PR base
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.14"}
+      - uses: actions/setup-node@v4
+        with: {node-version: "22"}
+      - run: pip install -r requirements.txt
+      - run: cd ts && npm ci
+      # Pull requests run only the tests the change can affect; pushes run everything.
+      # Failures are rerun twice: pass-on-rerun is reported as flaky, fail-every-time fails the build.
+      - name: tests
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            python -m casebook ci test --base "origin/${{ github.base_ref }}" --report ci-report.json
+          else
+            python -m casebook ci test --report ci-report.json
+          fi
+      - run: python tools/check_docs.py
+      - run: python tools/gen_test_matrix.py && git diff --exit-code docs/test-matrix.md
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ci-history
+          path: |
+            .ci/history.jsonl
+            ci-report.json

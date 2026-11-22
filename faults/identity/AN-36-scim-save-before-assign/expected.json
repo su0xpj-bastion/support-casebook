@@ -1,0 +1,10 @@
+{
+  "status": null,
+  "mode": "generic",
+  "provenance": {
+    "policy": "synthesized",
+    "crypto": "live-captured",
+    "error_codes": "synthesized"
+  },
+  "notes": "error codes are casebook's names; policy transcribed from the cited docs"
+}

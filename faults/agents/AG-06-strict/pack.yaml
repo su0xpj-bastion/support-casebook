@@ -1,0 +1,19 @@
+id: AG-06
+kind: anomaly
+title: 'strict:true sent, schema not strict-compatible: echoed strict:false, no error'
+provider: openai
+surface: agent
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- full message history of the failing turn
+- tools array
+- request-ids
+docs:
+- https://developers.openai.com/api/docs/guides/function-calling
+expect_requests: {}
+runs_real_sdk: null

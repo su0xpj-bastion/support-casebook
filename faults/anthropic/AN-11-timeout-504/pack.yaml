@@ -1,0 +1,25 @@
+id: AN-11
+kind: error
+title: 504 timeout_error; SDK retries create several request-ids per logical call
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+retry: C
+verdict:
+  cls: provider.timeout
+  retryable: C
+  owner: provider
+looks_like:
+- AN-08
+- AN-10
+evidence_required:
+- all request-ids for the logical call
+- max_tokens
+- stream false
+docs:
+- https://platform.claude.com/docs/en/api/errors
+expect_requests:
+  python_sdk_default: 3
+  policy: 1
+  ts_sdk_default: 3

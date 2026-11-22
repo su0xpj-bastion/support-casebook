@@ -1,0 +1,23 @@
+id: AN-36
+kind: anomaly
+title: 'SCIM saved before assigning everyone: mass deprovisioning'
+provider: anthropic
+surface: identity
+endpoint: '-'
+tier: L1
+live_tier: L3 (needs a real Claude/ChatGPT/OpenAI enterprise tenant)
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- decoded assertion / token claims
+- IdP app assignment and groups
+- SP configuration
+- timestamps
+docs:
+- https://support.claude.com/en/articles/13133195-setting-up-jit-or-scim-provisioning
+scope: vendor-policy
+expect_requests: {}
+modelled_not_real: Policy decisions are casebook's model of the vendor docs; crypto
+  (signxml, PyJWT) is real. Not Anthropic's or OpenAI's systems.

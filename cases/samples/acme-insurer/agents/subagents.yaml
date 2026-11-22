@@ -1,0 +1,4 @@
+# Claude Code subagent definitions (fictional)
+reviewer:
+  model: claude-sonnet-4-5
+  tools: [Read, Grep]

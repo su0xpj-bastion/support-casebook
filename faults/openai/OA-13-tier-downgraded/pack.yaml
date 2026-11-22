@@ -1,0 +1,20 @@
+id: OA-13
+kind: anomaly
+title: Requested priority, served and billed as default
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+retry: '-'
+verdict:
+  cls: billing.tier_downgraded
+request:
+  service_tier: priority
+looks_like: []
+evidence_required:
+- request service_tier
+- response service_tier
+docs:
+- https://developers.openai.com/api/docs/guides/priority-processing
+expect_requests:
+  python_sdk_default: 1

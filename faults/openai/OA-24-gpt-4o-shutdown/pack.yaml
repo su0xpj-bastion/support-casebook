@@ -1,0 +1,19 @@
+id: OA-24
+kind: anomaly
+title: gpt-4o / gpt-4.1 calls fail from 2027-01-14
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+live_tier: L2 (capture on 2027-01-14)
+retry: N
+verdict:
+  cls: model.shutdown
+looks_like: []
+evidence_required:
+- model id
+- date
+docs:
+- https://developers.openai.com/api/docs/deprecations
+expect_requests:
+  python_sdk_default: 3

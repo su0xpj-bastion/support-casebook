@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "mode": "agent_tool",
+  "provenance": {
+    "rule": "doc-verbatim"
+  },
+  "tool": {
+    "name": "Bash",
+    "input": {
+      "command": "touch casebook-proof.txt",
+      "description": "create proof file"
+    }
+  }
+}

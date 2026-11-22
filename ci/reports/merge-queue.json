@@ -1,0 +1,94 @@
+{
+  "2 failing + 1 conflict": [
+    {
+      "batch": 1,
+      "test_runs": 15,
+      "test_seconds": 15.1,
+      "wall_seconds": 17.6,
+      "landed": 13,
+      "ejected": {
+        "pr-05": "tests failed",
+        "pr-08": "conflict",
+        "pr-11": "tests failed"
+      },
+      "main_green_after": true
+    },
+    {
+      "batch": 2,
+      "test_runs": 12,
+      "test_seconds": 12.3,
+      "wall_seconds": 14.8,
+      "landed": 13,
+      "ejected": {
+        "pr-05": "tests failed",
+        "pr-08": "conflict",
+        "pr-11": "tests failed"
+      },
+      "main_green_after": true
+    },
+    {
+      "batch": 4,
+      "test_runs": 12,
+      "test_seconds": 12.0,
+      "wall_seconds": 14.4,
+      "landed": 13,
+      "ejected": {
+        "pr-05": "tests failed",
+        "pr-08": "conflict",
+        "pr-11": "tests failed"
+      },
+      "main_green_after": true
+    },
+    {
+      "batch": 8,
+      "test_runs": 14,
+      "test_seconds": 13.9,
+      "wall_seconds": 16.7,
+      "landed": 13,
+      "ejected": {
+        "pr-05": "tests failed",
+        "pr-08": "conflict",
+        "pr-11": "tests failed"
+      },
+      "main_green_after": true
+    }
+  ],
+  "no failures": [
+    {
+      "batch": 1,
+      "test_runs": 13,
+      "test_seconds": 12.8,
+      "wall_seconds": 15.0,
+      "landed": 13,
+      "ejected": {},
+      "main_green_after": true
+    },
+    {
+      "batch": 2,
+      "test_runs": 7,
+      "test_seconds": 6.9,
+      "wall_seconds": 8.7,
+      "landed": 13,
+      "ejected": {},
+      "main_green_after": true
+    },
+    {
+      "batch": 4,
+      "test_runs": 4,
+      "test_seconds": 4.0,
+      "wall_seconds": 5.5,
+      "landed": 13,
+      "ejected": {},
+      "main_green_after": true
+    },
+    {
+      "batch": 8,
+      "test_runs": 2,
+      "test_seconds": 2.0,
+      "wall_seconds": 3.4,
+      "landed": 13,
+      "ejected": {},
+      "main_green_after": true
+    }
+  ]
+}

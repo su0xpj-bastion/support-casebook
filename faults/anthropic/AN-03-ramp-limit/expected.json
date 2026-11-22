@@ -1,0 +1,29 @@
+{
+  "status": 429,
+  "headers": {
+    "retry-after": "1",
+    "anthropic-ratelimit-input-tokens-limit": "2000000",
+    "anthropic-ratelimit-input-tokens-remaining": "1900000",
+    "anthropic-ratelimit-input-tokens-reset": "2026-11-19T18:00:00Z"
+  },
+  "body": {
+    "type": "error",
+    "error": {
+      "type": "rate_limit_error",
+      "message": "Your traffic increased too quickly. Current ramp limit: 400,000 input tokens per minute (step: 100,000); your rate limit is 2,000,000.",
+      "details": {
+        "error_code": "ramp_limit_exceeded"
+      }
+    },
+    "request_id": "{request_id}"
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.type": "doc-verbatim",
+    "error.details.error_code": "doc-verbatim",
+    "headers.retry-after": "doc-verbatim",
+    "error.message": "synthesized",
+    "headers.anthropic-ratelimit-*": "synthesized"
+  },
+  "notes": "Docs: message 'usually states your current ramp limit, the step, and your rate limit'. Header values illustrative; remaining far above zero is the tell."
+}

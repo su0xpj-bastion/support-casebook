@@ -1,0 +1,20 @@
+{
+  "tests/test_agents.py": 4.14,
+  "tests/test_anomalies.py": 0.12,
+  "tests/test_ci.py": 41.24,
+  "tests/test_ci_graph.py": 20.07,
+  "tests/test_clients.py": 45.35,
+  "tests/test_exposure.py": 0.03,
+  "tests/test_gen.py": 0.0,
+  "tests/test_identity.py": 2.05,
+  "tests/test_live_captures.py": 0.0,
+  "tests/test_mcp_interop.py": 10.06,
+  "tests/test_migrations.py": 0.09,
+  "tests/test_packet.py": 0.03,
+  "tests/test_packs.py": 26.01,
+  "tests/test_redact.py": 0.0,
+  "tests/test_rules.py": 0.0,
+  "tests/test_sims.py": 42.76,
+  "tests/test_triage.py": 0.08,
+  "tests/test_ts_sdks.py": 30.77
+}

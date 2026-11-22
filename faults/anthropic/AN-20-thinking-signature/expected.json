@@ -1,0 +1,9 @@
+{
+  "status": 400,
+  "mode": "generic",
+  "provenance": {
+    "message_prefix": "doc-verbatim",
+    "binding_mechanism": "synthesized"
+  },
+  "notes": "Docs: blocks are bound to the conversation; resending the same edited history fails identically. The mock binds signatures to the first user message as a stand-in."
+}

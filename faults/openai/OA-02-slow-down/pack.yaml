@@ -1,0 +1,26 @@
+id: OA-02
+kind: error
+title: '429 slow_down: ramped too fast, dashboard shows headroom'
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+retry: Y
+verdict:
+  cls: limits.ramp
+  retryable: Y
+  owner: customer
+looks_like:
+- OA-01
+- OA-05
+evidence_required:
+- error.code
+- retry-after
+- x-ratelimit-remaining-*
+docs:
+- https://developers.openai.com/api/docs/guides/rate-limits
+- https://developers.openai.com/api/docs/guides/error-codes
+expect_requests:
+  python_sdk_default: 3
+  policy: 3
+  ts_sdk_default: 3

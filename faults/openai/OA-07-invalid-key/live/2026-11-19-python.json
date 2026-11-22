@@ -1,0 +1,75 @@
+{
+  "pack": "OA-07",
+  "captured_utc": "2026-11-19T23:29:15Z",
+  "provenance": "live-captured",
+  "tier": "free",
+  "sdk": {
+    "openai": "3.51.0",
+    "anthropic": "2.9.0"
+  },
+  "exception": "openai.AuthenticationError",
+  "status": 401,
+  "x_should_retry": null,
+  "headers": {
+    "date": "Thu, 19 Nov 2026 23:29:15 GMT",
+    "content-type": "text/plain",
+    "content-length": "294",
+    "connection": "keep-alive",
+    "cf-ray": "a5d2fef83fac7e6e-SJC",
+    "cf-cache-status": "DYNAMIC",
+    "server": "cloudflare",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+    "access-control-expose-headers": "CF-Ray, CF-Ray",
+    "x-content-type-options": "nosniff",
+    "x-error-json": "ewogICJlcnJvciI6IHsKICAgICJtZXNzYWdlIjogIkluY29ycmVjdCBBUEkga2V5IHByb3ZpZGVkOiBzay1wcm9qLSoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKjAwMDAuIFlvdSBjYW4gZmluZCB5b3VyIEFQSSBrZXkgYXQgaHR0cHM6Ly9wbGF0Zm9ybS5vcGVuYWkuY29tL2FjY291bnQvYXBpLWtleXMuIiwKICAgICJ0eXBlIjogImludmFsaWRfcmVxdWVzdF9lcnJvciIsCiAgICAiY29kZSI6ICJpbnZhbGlkX2FwaV9rZXkiLAogICAgInBhcmFtIjogbnVsbAogIH0sCiAgInN0YXR1cyI6IDQwMQp9",
+    "x-openai-authorization-error": "401",
+    "x-openai-ide-error-code": "invalid_api_key",
+    "x-openai-internal-caller": "unknown_through_ide",
+    "x-request-id": "req_c5369ce15d1e4db582a9e57654836184",
+    "set-cookie": "[REDACTED:header]",
+    "alt-svc": "h3=\":443\"; ma=86400"
+  },
+  "body": {
+    "error": {
+      "message": "Incorrect API key provided: sk-proj-************************************0000. You can find your API key at https://platform.openai.com/account/api-keys.",
+      "type": "invalid_request_error",
+      "code": "invalid_api_key",
+      "param": null
+    },
+    "status": 401
+  },
+  "verdict": {
+    "cls": "auth.invalid",
+    "retryable": "N",
+    "owner": "customer",
+    "basis": "status=401 error.code=invalid_api_key",
+    "confidence": "code",
+    "doc": "https://developers.openai.com/api/docs/guides/error-codes"
+  },
+  "diff": [
+    {
+      "field": "status",
+      "expected": 401,
+      "live": 401,
+      "match": true
+    },
+    {
+      "field": "error.type",
+      "expected": "invalid_request_error",
+      "live": "invalid_request_error",
+      "match": true
+    },
+    {
+      "field": "error.code",
+      "expected": "invalid_api_key",
+      "live": "invalid_api_key",
+      "match": true
+    },
+    {
+      "field": "error.message",
+      "expected": "Incorrect API key provided: sk-proj-********************************wxyz. You can find your API key at https://platform.openai.com/account/api-keys.",
+      "live": "Incorrect API key provided: sk-proj-************************************0000. You can find your API key at https://platform.openai.com/account/api-keys.",
+      "match": false
+    }
+  ]
+}

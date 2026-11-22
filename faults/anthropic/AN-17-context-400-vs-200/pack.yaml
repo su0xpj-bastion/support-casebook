@@ -1,0 +1,24 @@
+id: AN-17
+kind: anomaly
+title: 'Context: 400 ''prompt is too long'' vs 200 model_context_window_exceeded'
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2
+retry: N
+verdict:
+  cls: context.window_full
+looks_like:
+- AN-16
+- OA-21
+evidence_required:
+- status
+- stop_reason
+- input tokens
+- max_tokens
+docs:
+- https://platform.claude.com/docs/en/build-with-claude/context-windows
+- https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons
+expect_requests:
+  python_sdk_default: 2

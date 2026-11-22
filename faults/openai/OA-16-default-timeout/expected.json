@@ -1,0 +1,9 @@
+{
+  "status": null,
+  "mode": "client",
+  "provenance": {
+    "behaviour": "doc-verbatim",
+    "value": "live-captured"
+  },
+  "notes": "openai 3.51.0 and anthropic 2.9.0 both default to a 600 s read timeout (read from the installed SDKs)."
+}

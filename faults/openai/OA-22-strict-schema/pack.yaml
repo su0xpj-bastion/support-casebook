@@ -1,0 +1,20 @@
+id: OA-22
+kind: client
+title: '''strict is on'' but the schema is not strict-compatible'
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+live_tier: L2
+retry: N
+verdict:
+  cls: schema.not_strict
+looks_like: []
+evidence_required:
+- tool/response schema
+- echoed strict flag (Responses)
+docs:
+- https://developers.openai.com/api/docs/guides/function-calling
+- https://developers.openai.com/api/docs/guides/structured-outputs
+expect_requests:
+  python_sdk_default: 0

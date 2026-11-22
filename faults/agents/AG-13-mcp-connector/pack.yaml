@@ -1,0 +1,19 @@
+id: AG-13
+kind: anomaly
+title: 'MCP connector: undefined server 400; typo in configs is a silent no-op'
+provider: anthropic
+surface: agent
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- full message history of the failing turn
+- tools array
+- request-ids
+docs:
+- https://platform.claude.com/docs/en/agents-and-tools/mcp-connector
+expect_requests: {}
+runs_real_sdk: null

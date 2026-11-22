@@ -1,0 +1,9 @@
+{
+  "status": 503,
+  "mode": "capacity",
+  "schedule": [{"until_s": 3.0, "rps": 10}, {"until_s": 10000, "rps": 60}],
+  "burst_s": 0.25,
+  "reject_cost": 0.5,
+  "provenance": {"failed_requests_count_toward_limits": "doc-verbatim", "capacity_numbers": "synthesized", "incident_shape": "doc-partial"},
+  "notes": "Shape from OpenAI's 2026-04-20 write-up (auth-edge overload amplified by retries); numbers are compressed and synthetic."
+}

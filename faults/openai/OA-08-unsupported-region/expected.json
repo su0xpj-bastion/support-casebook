@@ -1,0 +1,19 @@
+{
+  "status": 403,
+  "headers": {},
+  "body": {
+    "error": {
+      "message": "Country, region, or territory not supported",
+      "type": "request_forbidden",
+      "param": null,
+      "code": "unsupported_country_region_territory"
+    }
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.message": "doc-verbatim",
+    "error.type": "synthesized",
+    "error.code": "synthesized"
+  },
+  "notes": "Often a cloud egress region or VPN, not the customer's headquarters."
+}

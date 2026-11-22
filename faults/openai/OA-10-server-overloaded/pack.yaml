@@ -1,0 +1,26 @@
+id: OA-10
+title: 503 server_is_overloaded surfaces as InternalServerError, not RateLimitError
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+retry: Y
+verdict:
+  cls: provider.capacity
+  retryable: Y
+  owner: provider
+looks_like:
+- OA-01
+evidence_required:
+- http.status
+- error.code
+- retry-after
+docs:
+- https://developers.openai.com/api/docs/guides/error-codes
+sdk_exception:
+  python: openai.InternalServerError
+kind: error
+expect_requests:
+  python_sdk_default: 3
+  policy: 3
+  ts_sdk_default: 3

@@ -1,0 +1,10 @@
+{
+  "status": null,
+  "mode": "generic",
+  "provenance": {
+    "sdks": "live-captured",
+    "spec": "doc-verbatim",
+    "ts_server_rejection_text": "synthesized"
+  },
+  "notes": "The old server's 400 text comes from casebook's session wrapper (ts/mcp_legacy_server.mjs), which mirrors the SDK's example server."
+}

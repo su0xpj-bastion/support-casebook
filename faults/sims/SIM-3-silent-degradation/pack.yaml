@@ -1,0 +1,15 @@
+id: SIM-3
+kind: sim
+title: Silent quality degradation on a sticky slice — canary evals vs per-session probes
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+retry: '-'
+verdict: {cls: sim.silent_degradation}
+looks_like: [AN-30, AN-23]
+evidence_required: [request-ids by platform and date, per-session quality signal, platform mix]
+docs:
+- https://www.anthropic.com/engineering/a-postmortem-of-three-recent-issues
+expect_requests: {}
+covers: [AN-30]

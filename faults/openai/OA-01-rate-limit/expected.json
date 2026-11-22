@@ -1,0 +1,29 @@
+{
+  "status": 429,
+  "headers": {
+    "retry-after": "1",
+    "x-ratelimit-limit-requests": "500",
+    "x-ratelimit-remaining-requests": "0",
+    "x-ratelimit-reset-requests": "1s",
+    "x-ratelimit-limit-tokens": "200000",
+    "x-ratelimit-remaining-tokens": "184000",
+    "x-ratelimit-reset-tokens": "4.8s"
+  },
+  "body": {
+    "error": {
+      "message": "Rate limit reached for requests per min (RPM): Limit 500, Used 500, Requested 1.",
+      "type": "requests",
+      "param": null,
+      "code": "rate_limit_exceeded"
+    }
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "headers.x-ratelimit-*": "doc-verbatim",
+    "error.message": "doc-partial",
+    "error.type": "synthesized",
+    "error.code": "synthesized",
+    "headers.values": "synthesized"
+  },
+  "notes": "Header names are documented; values illustrative. Requests (not tokens) are exhausted here: remaining-requests=0, remaining-tokens high."
+}

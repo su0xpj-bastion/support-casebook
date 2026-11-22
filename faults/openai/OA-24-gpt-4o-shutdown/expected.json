@@ -1,0 +1,10 @@
+{
+  "status": 404,
+  "mode": "generic",
+  "provenance": {
+    "date": "doc-verbatim",
+    "status": "synthesized",
+    "code": "synthesized"
+  },
+  "notes": "Docs: shutdown models no longer accept requests; the error code is not published (historically 404 model_not_found)."
+}

@@ -1,0 +1,19 @@
+id: AG-24
+kind: anomaly
+title: 'allowed_tools didn''t restrict: unlisted Bash runs under bypassPermissions'
+provider: anthropic
+surface: agent
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- full message history of the failing turn
+- tools array
+- request-ids
+docs:
+- https://code.claude.com/docs/en/agent-sdk/permissions
+expect_requests: {}
+runs_real_sdk: claude-agent-sdk (bundled Claude Code)

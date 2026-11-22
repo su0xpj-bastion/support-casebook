@@ -1,0 +1,21 @@
+id: AN-23
+kind: anomaly
+title: Refusal reported as an outage (HTTP 200, stop_reason=refusal)
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2
+retry: N
+verdict:
+  cls: model.refusal
+looks_like:
+- AN-09
+evidence_required:
+- status 200
+- stop_reason
+- request-id
+docs:
+- https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons
+expect_requests:
+  python_sdk_default: 1

@@ -1,0 +1,19 @@
+{
+  "status": 400,
+  "headers": {},
+  "body": {
+    "error": {
+      "message": "Invalid `service_tier` argument: this project does not allow the requested service tier.",
+      "type": "invalid_request_error",
+      "param": "service_tier",
+      "code": null
+    }
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.message": "doc-partial",
+    "error.type": "synthesized",
+    "error.param": "synthesized"
+  },
+  "notes": "Docs: returned when the project restricts tiers; can trigger with service_tier=auto."
+}

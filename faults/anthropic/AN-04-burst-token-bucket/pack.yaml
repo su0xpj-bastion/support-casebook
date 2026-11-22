@@ -1,0 +1,27 @@
+id: AN-04
+kind: error
+title: 429 on a sub-minute burst under the per-minute limit
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2
+retry: Y
+verdict:
+  cls: limits.rate
+  retryable: Y
+  owner: customer
+looks_like:
+- AN-03
+- AN-01
+- AN-05
+evidence_required:
+- anthropic-ratelimit-requests-remaining
+- retry-after
+- error.details.error_code (absent)
+docs:
+- https://platform.claude.com/docs/en/api/rate-limits
+expect_requests:
+  python_sdk_default: 3
+  policy: 3
+  ts_sdk_default: 3

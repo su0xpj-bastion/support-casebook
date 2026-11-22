@@ -1,0 +1,9 @@
+{
+  "status": 200,
+  "mode": "generic",
+  "headers": {},
+  "provenance": {
+    "behaviour": "doc-verbatim"
+  },
+  "notes": "Docs: invalidation follows tools -> system -> messages; changing tools invalidates everything after."
+}

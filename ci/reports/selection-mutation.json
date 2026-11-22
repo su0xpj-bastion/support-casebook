@@ -1,0 +1,369 @@
+[
+  {
+    "module": "casebook/redact.py",
+    "mutation": "redact_headers:53 In -> NotIn",
+    "selected_files": [
+      "tests/test_agents.py",
+      "tests/test_anomalies.py",
+      "tests/test_ci_graph.py",
+      "tests/test_clients.py",
+      "tests/test_gen.py",
+      "tests/test_live_captures.py",
+      "tests/test_migrations.py",
+      "tests/test_packet.py",
+      "tests/test_packs.py",
+      "tests/test_redact.py",
+      "tests/test_rules.py",
+      "tests/test_sims.py",
+      "tests/test_triage.py",
+      "tests/test_ts_sdks.py"
+    ],
+    "selected": {
+      "ran": true,
+      "failed": true,
+      "seconds": 75.5,
+      "tail": [
+        "1 failed, 86 passed in 74.10s (0:01:14)"
+      ]
+    },
+    "unselected": {
+      "ran": true,
+      "failed": false,
+      "seconds": 36.1,
+      "tail": [
+        "83 passed in 35.33s"
+      ]
+    },
+    "selection_miss": false
+  },
+  {
+    "module": "casebook/packet.py",
+    "mutation": "parse_retry_after:49 IsNot -> Is",
+    "selected_files": [
+      "tests/test_agents.py",
+      "tests/test_anomalies.py",
+      "tests/test_ci_graph.py",
+      "tests/test_clients.py",
+      "tests/test_live_captures.py",
+      "tests/test_migrations.py",
+      "tests/test_packet.py",
+      "tests/test_packs.py",
+      "tests/test_rules.py",
+      "tests/test_sims.py",
+      "tests/test_triage.py",
+      "tests/test_ts_sdks.py"
+    ],
+    "selected": {
+      "ran": true,
+      "failed": true,
+      "seconds": 3.9,
+      "tail": [
+        "1 error in 2.81s"
+      ]
+    },
+    "unselected": {
+      "ran": true,
+      "failed": false,
+      "seconds": 35.7,
+      "tail": [
+        "97 passed in 34.97s"
+      ]
+    },
+    "selection_miss": false
+  },
+  {
+    "module": "casebook/rules.py",
+    "mutation": "classify:39 Eq -> NotEq",
+    "selected_files": [
+      "tests/test_agents.py",
+      "tests/test_anomalies.py",
+      "tests/test_ci.py",
+      "tests/test_ci_graph.py",
+      "tests/test_clients.py",
+      "tests/test_live_captures.py",
+      "tests/test_migrations.py",
+      "tests/test_packet.py",
+      "tests/test_packs.py",
+      "tests/test_rules.py",
+      "tests/test_sims.py",
+      "tests/test_triage.py",
+      "tests/test_ts_sdks.py"
+    ],
+    "selected": {
+      "ran": true,
+      "failed": true,
+      "seconds": 9.5,
+      "tail": [
+        "1 failed, 47 passed in 8.11s"
+      ]
+    },
+    "unselected": {
+      "ran": true,
+      "failed": false,
+      "seconds": 13.5,
+      "tail": [
+        "66 passed in 12.80s"
+      ]
+    },
+    "selection_miss": false
+  },
+  {
+    "module": "casebook/policy.py",
+    "mutation": "call_openai:36 IsNot -> Is",
+    "selected_files": [
+      "tests/test_agents.py",
+      "tests/test_anomalies.py",
+      "tests/test_ci_graph.py",
+      "tests/test_clients.py",
+      "tests/test_live_captures.py",
+      "tests/test_migrations.py",
+      "tests/test_packet.py",
+      "tests/test_packs.py",
+      "tests/test_sims.py",
+      "tests/test_ts_sdks.py"
+    ],
+    "selected": {
+      "ran": true,
+      "failed": true,
+      "seconds": 98.8,
+      "tail": [
+        "1 failed, 447 passed, 2 skipped in 97.43s (0:01:37)"
+      ]
+    },
+    "unselected": {
+      "ran": true,
+      "failed": false,
+      "seconds": 36.4,
+      "tail": [
+        "127 passed in 35.42s"
+      ]
+    },
+    "selection_miss": false
+  },
+  {
+    "module": "casebook/checks.py",
+    "mutation": "service_tier:25 In -> NotIn",
+    "selected_files": [
+      "tests/test_agents.py",
+      "tests/test_anomalies.py",
+      "tests/test_ci_graph.py",
+      "tests/test_clients.py",
+      "tests/test_live_captures.py",
+      "tests/test_migrations.py",
+      "tests/test_packet.py",
+      "tests/test_packs.py",
+      "tests/test_sims.py",
+      "tests/test_ts_sdks.py"
+    ],
+    "selected": {
+      "ran": true,
+      "failed": true,
+      "seconds": 8.7,
+      "tail": [
+        "1 failed, 21 passed in 7.37s"
+      ]
+    },
+    "unselected": {
+      "ran": true,
+      "failed": false,
+      "seconds": 36.2,
+      "tail": [
+        "127 passed in 35.34s"
+      ]
+    },
+    "selection_miss": false
+  },
+  {
+    "module": "casebook/exposure.py",
+    "mutation": "_sev_for_date:42 LtE -> Gt",
+    "selected_files": [
+      "tests/test_ci_graph.py",
+      "tests/test_exposure.py"
+    ],
+    "selected": {
+      "ran": true,
+      "failed": true,
+      "seconds": 19.8,
+      "tail": [
+        "1 failed, 19 passed in 19.31s"
+      ]
+    },
+    "unselected": {
+      "ran": true,
+      "failed": false,
+      "seconds": 188.9,
+      "tail": [
+        "625 passed, 2 skipped in 187.41s (0:03:07)"
+      ]
+    },
+    "selection_miss": false
+  },
+  {
+    "module": "casebook/models.py",
+    "mutation": "is_retired:80 IsNot -> Is",
+    "selected_files": [
+      "tests/test_agents.py",
+      "tests/test_anomalies.py",
+      "tests/test_ci_graph.py",
+      "tests/test_clients.py",
+      "tests/test_exposure.py",
+      "tests/test_live_captures.py",
+      "tests/test_migrations.py",
+      "tests/test_packet.py",
+      "tests/test_packs.py",
+      "tests/test_sims.py",
+      "tests/test_ts_sdks.py"
+    ],
+    "selected": {
+      "ran": true,
+      "failed": true,
+      "seconds": 4.6,
+      "tail": [
+        "1 failed in 3.38s"
+      ]
+    },
+    "unselected": {
+      "ran": true,
+      "failed": false,
+      "seconds": 36.3,
+      "tail": [
+        "121 passed in 35.48s"
+      ]
+    },
+    "selection_miss": false
+  },
+  {
+    "module": "casebook/gen/updates.py",
+    "mutation": "customer_update:33 Eq -> NotEq",
+    "selected_files": [
+      "tests/test_anomalies.py",
+      "tests/test_ci_graph.py",
+      "tests/test_gen.py",
+      "tests/test_migrations.py",
+      "tests/test_sims.py"
+    ],
+    "selected": {
+      "ran": true,
+      "failed": true,
+      "seconds": 24.6,
+      "tail": [
+        "1 failed, 36 passed in 23.29s"
+      ]
+    },
+    "unselected": {
+      "ran": true,
+      "failed": false,
+      "seconds": 143.9,
+      "tail": [
+        "594 passed, 2 skipped in 142.46s (0:02:22)"
+      ]
+    },
+    "selection_miss": false
+  },
+  {
+    "module": "casebook/identity/sp.py",
+    "mutation": "refresh_domain:72 In -> NotIn",
+    "selected_files": [
+      "tests/test_anomalies.py",
+      "tests/test_ci_graph.py",
+      "tests/test_identity.py",
+      "tests/test_migrations.py"
+    ],
+    "selected": {
+      "ran": true,
+      "failed": true,
+      "seconds": 24.2,
+      "tail": [
+        "1 failed, 56 passed in 22.80s"
+      ]
+    },
+    "unselected": {
+      "ran": true,
+      "failed": false,
+      "seconds": 184.9,
+      "tail": [
+        "566 passed, 2 skipped in 183.41s (0:03:03)"
+      ]
+    },
+    "selection_miss": false
+  },
+  {
+    "module": "casebook/identity/wif.py",
+    "mutation": "_matches:37 Eq -> NotEq",
+    "selected_files": [
+      "tests/test_anomalies.py",
+      "tests/test_ci_graph.py",
+      "tests/test_identity.py",
+      "tests/test_migrations.py"
+    ],
+    "selected": {
+      "ran": true,
+      "failed": true,
+      "seconds": 25.7,
+      "tail": [
+        "1 failed, 70 passed in 24.32s"
+      ]
+    },
+    "unselected": {
+      "ran": true,
+      "failed": false,
+      "seconds": 185.6,
+      "tail": [
+        "566 passed, 2 skipped in 184.19s (0:03:04)"
+      ]
+    },
+    "selection_miss": false
+  },
+  {
+    "module": "casebook/triage/classify.py",
+    "mutation": "triage_rules:89 NotIn -> In",
+    "selected_files": [
+      "tests/test_ci_graph.py",
+      "tests/test_triage.py"
+    ],
+    "selected": {
+      "ran": true,
+      "failed": true,
+      "seconds": 20.8,
+      "tail": [
+        "1 failed, 21 passed in 20.00s"
+      ]
+    },
+    "unselected": {
+      "ran": true,
+      "failed": false,
+      "seconds": 187.1,
+      "tail": [
+        "620 passed, 2 skipped in 185.71s (0:03:05)"
+      ]
+    },
+    "selection_miss": false
+  },
+  {
+    "module": "casebook/sims/s1_outage.py",
+    "mutation": "classify:43 GtE -> Lt",
+    "selected_files": [
+      "tests/test_anomalies.py",
+      "tests/test_ci_graph.py",
+      "tests/test_migrations.py",
+      "tests/test_sims.py"
+    ],
+    "selected": {
+      "ran": true,
+      "failed": true,
+      "seconds": 36.7,
+      "tail": [
+        "1 failed, 44 passed in 35.33s"
+      ]
+    },
+    "unselected": {
+      "ran": true,
+      "failed": false,
+      "seconds": 144.0,
+      "tail": [
+        "602 passed, 2 skipped in 142.68s (0:02:22)"
+      ]
+    },
+    "selection_miss": false
+  }
+]

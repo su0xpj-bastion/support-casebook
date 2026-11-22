@@ -1,0 +1,9 @@
+{
+  "status": 200,
+  "mode": "generic",
+  "provenance": {
+    "behaviour": "doc-verbatim",
+    "output": "synthesized"
+  },
+  "notes": "Docs (handling stop reasons): adding text right after tool_result blocks can teach the model to end its turn with an empty response."
+}

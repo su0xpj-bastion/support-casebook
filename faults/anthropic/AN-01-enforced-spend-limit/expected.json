@@ -1,0 +1,23 @@
+{
+  "status": 429,
+  "headers": {},
+  "body": {
+    "type": "error",
+    "error": {
+      "type": "rate_limit_error",
+      "message": "You have reached your API usage limits: your organization has crossed its monthly API usage threshold. You will regain access on {regain_date} at 00:00 UTC.",
+      "details": {
+        "error_code": "enforced_spend_limit_reached"
+      }
+    },
+    "request_id": "{request_id}"
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.type": "doc-verbatim",
+    "error.details.error_code": "doc-verbatim",
+    "headers.retry-after": "doc-verbatim",
+    "error.message": "doc-partial"
+  },
+  "notes": "Docs quote the message with an ellipsis; middle wording reconstructed. 'has no retry-after header and keeps failing until access resumes'."
+}

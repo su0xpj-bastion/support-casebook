@@ -1,0 +1,10 @@
+{
+  "status": null,
+  "mode": "generic",
+  "provenance": {
+    "400_message_prefix": "doc-verbatim",
+    "200_stop_reason": "doc-verbatim",
+    "window_size": "synthesized"
+  },
+  "notes": "Mock model 'mock-small-window' has a 1,000-token window so both branches reproduce cheaply."
+}

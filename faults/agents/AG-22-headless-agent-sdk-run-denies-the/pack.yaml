@@ -1,0 +1,19 @@
+id: AG-22
+kind: anomaly
+title: Headless Agent SDK run denies the tool — and still reports success
+provider: anthropic
+surface: agent
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- full message history of the failing turn
+- tools array
+- request-ids
+docs:
+- https://code.claude.com/docs/en/agent-sdk/permissions
+expect_requests: {}
+runs_real_sdk: claude-agent-sdk (bundled Claude Code)

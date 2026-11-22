@@ -1,0 +1,27 @@
+id: AN-01
+title: Monthly tier spend cap — 429 with no retry-after; retries are useless
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+retry: N
+verdict:
+  cls: billing.tier_spend_cap
+  retryable: N
+  owner: customer-admin
+looks_like:
+- AN-03
+- AN-04
+- OA-01
+evidence_required:
+- http.status
+- error.details.error_code
+- retry-after (absent)
+docs:
+- https://platform.claude.com/docs/en/api/rate-limits
+- https://platform.claude.com/docs/en/api/errors
+kind: error
+expect_requests:
+  python_sdk_default: 3
+  policy: 1
+  ts_sdk_default: 3

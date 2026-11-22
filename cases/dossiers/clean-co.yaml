@@ -1,0 +1,10 @@
+# FICTIONAL account with a clean integration (false-positive check).
+account: Clean Co (fictional)
+provider: openai
+tier: growth
+platforms: [first_party]
+models_in_use: [gpt-6-luna]
+dependencies: []
+contacts: {}
+code_paths:
+  - ../samples/clean-co

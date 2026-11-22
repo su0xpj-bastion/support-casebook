@@ -1,0 +1,28 @@
+id: OA-01
+kind: error
+title: 429 rate limit under normal load
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+live_tier: L2
+retry: Y
+verdict:
+  cls: limits.rate
+  retryable: Y
+  owner: customer
+looks_like:
+- OA-02
+- OA-04
+- OA-05
+evidence_required:
+- x-ratelimit-remaining-*
+- retry-after
+- error.code
+docs:
+- https://developers.openai.com/api/docs/guides/rate-limits
+- https://developers.openai.com/api/docs/guides/error-codes
+expect_requests:
+  python_sdk_default: 3
+  policy: 3
+  ts_sdk_default: 3

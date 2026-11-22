@@ -1,0 +1,19 @@
+{
+  "status": 429,
+  "headers": {},
+  "body": {
+    "error": {
+      "message": "You have run out of prepaid credits. Add credits to continue.",
+      "type": "insufficient_quota",
+      "param": null,
+      "code": "credit_balance_exhausted"
+    }
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.code": "doc-verbatim",
+    "error.type": "doc-verbatim",
+    "error.message": "synthesized"
+  },
+  "notes": "Docs list the code and say error.type 'may be insufficient_quota'; message wording is not published."
+}

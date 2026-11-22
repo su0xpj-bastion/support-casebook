@@ -1,0 +1,108 @@
+# Hand-written tickets. Each one tries to pull triage toward the wrong answer.
+- id: ADV-01
+  provider: anthropic
+  gold: billing.tier_spend_cap
+  why: "customer calls it a rate limit; the error code says spend cap"
+  text: "Slack from enterprise SRE: We're being rate limited since 00:00 UTC on the 1st, please raise our rate limits ASAP. Error is 429 rate_limit_error with error_code enforced_spend_limit_reached, request id req_011CVa1b2c3d4e5f."
+- id: ADV-02
+  provider: openai
+  gold: billing.credits_exhausted
+  why: "says outage; code is credits"
+  text: "Email: Your API is down for us, every request fails. 429 insufficient_quota, code credit_balance_exhausted. request id req_8e86f5ae109c67507329af26e2357b56."
+- id: ADV-03
+  provider: anthropic
+  gold: limits.ramp
+  why: "under limits, sounds like a bug; ramp code present"
+  text: "Call note: Customer insists it's a bug because they're at 20% of their ITPM limit. 429 with ramp_limit_exceeded, retry-after 1. They just launched a backfill job."
+- id: ADV-04
+  provider: openai
+  gold: provider.capacity
+  why: "Python surfaces InternalServerError; customer thinks their code crashed"
+  text: "Email: Our Python worker crashes with openai.InternalServerError: Error code: 503 - server_is_overloaded. We only catch RateLimitError. Is our code wrong?"
+- id: ADV-05
+  provider: anthropic
+  gold: billing.self_set_spend_limit
+  why: "400 looks like a bad request; message says spend limit"
+  text: "Slack: Getting 400 invalid_request_error 'You have reached your specified workspace API usage limits' on the prod workspace. We didn't deploy anything."
+- id: ADV-06
+  provider: anthropic
+  gold: auth.cors_blocked
+  why: "401 with a valid key — looks like a key problem"
+  text: "Email: Key works from our server but our React app gets 401 authentication_error: CORS requests are not allowed for this Organization. Did you revoke our key?"
+- id: ADV-07
+  provider: openai
+  gold: needs_more_info
+  abstain_ok: true
+  evidence_level: vague
+  why: "nothing actionable — must ask, not guess"
+  text: "Call note: 'It's slow and sometimes fails.' No error text, no request ids, no timestamps."
+- id: ADV-08
+  provider: openai
+  gold: needs_more_info
+  abstain_ok: true
+  evidence_level: partial
+  why: "a bare 429 could be any of six causes — two of them non-retryable"
+  text: "Email: we get 429 errors. Please fix."
+- id: ADV-09
+  provider: anthropic
+  gold: needs_more_info
+  abstain_ok: true
+  evidence_level: partial
+  why: "a bare 429 on Anthropic: rate, ramp or spend cap"
+  text: "Slack: 429s everywhere since this morning. Can you raise limits? Our key is sk-proj-casebookPLANTEDsecret00000000000000"
+- id: ADV-10
+  provider: openai
+  gold: billing.spend_limit
+  why: "mixed signals — mentions rate limit headers but the code is project spend"
+  text: "Email: x-ratelimit-remaining-requests is 480 so we're nowhere near the limit, yet we get 429 project_spend_limit_exceeded on the claims project. The analytics project works."
+- id: ADV-11
+  provider: openai
+  gold: client.timeout
+  why: "thinks it's an outage; no response at all, client timeout set to 30 s"
+  text: "Slack: Requests to responses API hang then fail with APITimeoutError after 30s. We set X-Client-Request-Id claims-7f3a-0042. Is there an outage?"
+- id: ADV-12
+  provider: anthropic
+  gold: request.too_large
+  why: "no request id because the edge rejected it"
+  text: "Email: Upload of a 40MB scanned claim file fails with 413 and an HTML page from cloudflare. There's no request-id header to give you."
+- id: ADV-13
+  provider: anthropic
+  gold: provider.capacity
+  why: "error arrives after HTTP 200 mid-stream"
+  text: "Call note: The stream starts fine (HTTP 200) then we get event: error overloaded_error halfway through. Our retry logic only checks the status code."
+- id: ADV-14
+  provider: openai
+  gold: auth.invalid
+  why: "customer blames region; message is incorrect key"
+  text: "Email: since moving to Frankfurt we get 401 'Incorrect API key provided: sk-proj-****wxyz'. Is the EU blocked?"
+- id: ADV-15
+  provider: openai
+  gold: auth.region
+  why: "customer blames the key; message is region"
+  text: "Slack: our new key must be broken — 403 'Country, region, or territory not supported' from the Singapore cluster."
+- id: ADV-16
+  provider: anthropic
+  gold: billing.payment
+  why: "payment problem framed as outage"
+  text: "Email: Is Claude down? We get 402 billing_error on every call since the card expired notice."
+- id: ADV-17
+  provider: openai
+  gold: capacity.flex
+  why: "flex 429 mistaken for account rate limit"
+  text: "Slack: batch summarisation on service_tier flex returns 429 Resource Unavailable. We are way under our TPM."
+- id: ADV-18
+  provider: anthropic
+  gold: limits.workspace
+  abstain_ok: true
+  why: "one workspace only"
+  text: "Email: Only the data-science workspace gets 429 rate_limit_error with retry-after; anthropic-ratelimit-tokens-limit is 50000 while input-tokens-limit is 2000000."
+- id: ADV-19
+  provider: openai
+  gold: config.service_tier
+  why: "400 after admin change; customer thinks SDK bug"
+  text: "Email: after upgrading the SDK we get 400 Invalid `service_tier` argument even with service_tier auto. Admin restricted tiers on the project last week."
+- id: ADV-20
+  provider: anthropic
+  gold: provider.timeout
+  why: "504 on long non-streaming call"
+  text: "Slack: long non-streaming summaries fail with 504 timeout_error and we see three different request-ids per call."

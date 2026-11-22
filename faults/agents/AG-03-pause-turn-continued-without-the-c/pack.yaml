@@ -1,0 +1,19 @@
+id: AG-03
+kind: anomaly
+title: 'pause_turn continued without the container id: earlier files silently gone'
+provider: anthropic
+surface: agent
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- full message history of the failing turn
+- tools array
+- request-ids
+docs:
+- https://platform.claude.com/docs/en/agents-and-tools/tool-use/server-tools
+expect_requests: {}
+runs_real_sdk: null

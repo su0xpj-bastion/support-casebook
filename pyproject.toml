@@ -1,0 +1,15 @@
+[project]
+name = "support-casebook"
+version = "0.1.0"
+description = "Reproducible, doc-cited OpenAI and Anthropic support failure packs"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+# AN-19/AN-26 call a deprecated model on purpose; the SDK warning itself is asserted in test_migrations.
+filterwarnings = [
+  "ignore:The model 'claude-sonnet-4-5:DeprecationWarning",
+  # openai-agents 0.25.0 on Python 3.14 (upstream, not ours)
+  "ignore:'asyncio.get_event_loop_policy' is deprecated:DeprecationWarning",
+]

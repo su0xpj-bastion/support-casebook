@@ -1,0 +1,23 @@
+id: AN-10
+kind: client
+title: Long non-streaming call fails instantly, no request-id
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+retry: N
+verdict:
+  cls: client.requires_streaming
+request:
+  max_tokens: 64000
+looks_like:
+- AN-11
+evidence_required:
+- exception type
+- max_tokens
+- stream false
+docs:
+- https://platform.claude.com/docs/en/cli-sdks-libraries/sdks/python
+- https://platform.claude.com/docs/en/api/errors
+expect_requests:
+  python_sdk_default: 0

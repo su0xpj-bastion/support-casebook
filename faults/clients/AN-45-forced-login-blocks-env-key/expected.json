@@ -1,0 +1,9 @@
+{
+  "status": null,
+  "mode": "generic",
+  "provenance": {
+    "message": "live-captured",
+    "delivery": "synthesized"
+  },
+  "notes": "delivery: synthesized (hidden --managed-settings flag, not a managed-settings.json file)"
+}

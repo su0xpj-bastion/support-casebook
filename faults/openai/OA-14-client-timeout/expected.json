@@ -1,0 +1,12 @@
+{
+  "status": 200,
+  "mode": "delay",
+  "delay_s": 2,
+  "headers": {},
+  "body": null,
+  "provenance": {
+    "status": "doc-verbatim",
+    "mode": "synthesized"
+  },
+  "notes": "Server answers after 2 s; client timeout 0.5 s. No response means no x-request-id; OpenAI logs X-Client-Request-Id so support can still find the call."
+}

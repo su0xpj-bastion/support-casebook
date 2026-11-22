@@ -1,0 +1,15 @@
+{
+  "status": 200,
+  "mode": "agent_tool",
+  "provenance": {
+    "default_mode_denies": "doc-verbatim",
+    "success_subtype": "live-captured"
+  },
+  "tool": {
+    "name": "Bash",
+    "input": {
+      "command": "touch casebook-proof.txt",
+      "description": "create proof file"
+    }
+  }
+}

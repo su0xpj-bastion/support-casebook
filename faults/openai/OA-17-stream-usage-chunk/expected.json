@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "mode": "success",
+  "body_merge": {},
+  "cases": {
+    "cut": {
+      "stream_opts": {
+        "cut_before_usage": true
+      }
+    }
+  },
+  "provenance": {
+    "final_chunk_empty_choices": "doc-verbatim",
+    "lost_on_interruption": "doc-verbatim"
+  },
+  "notes": "Docs: with include_usage an extra chunk precedes [DONE] whose choices is empty; it may be missing if the stream is interrupted."
+}

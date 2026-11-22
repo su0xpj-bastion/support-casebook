@@ -1,0 +1,26 @@
+id: AN-03
+title: 429 ramp_limit_exceeded while under ITPM/OTPM limits
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+retry: Y
+verdict:
+  cls: limits.ramp
+  retryable: Y
+  owner: customer
+looks_like:
+- AN-01
+- AN-04
+- AN-05
+evidence_required:
+- error.details.error_code
+- retry-after
+- anthropic-ratelimit-*
+docs:
+- https://platform.claude.com/docs/en/api/rate-limits
+kind: error
+expect_requests:
+  python_sdk_default: 3
+  policy: 3
+  ts_sdk_default: 3

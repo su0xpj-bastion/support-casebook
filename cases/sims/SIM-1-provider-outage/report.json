@@ -1,0 +1,17 @@
+{
+  "seconds_to_provider_side": 0.5,
+  "status_page_post_s": 0.1,
+  "minutes_to_provider_side": 5,
+  "minutes_to_see_recovery": 10,
+  "verdicts_before_outage": [
+    "customer-side"
+  ],
+  "updates": 3,
+  "lint_problems": 0,
+  "requests": 848,
+  "control_client_4xx": 43,
+  "finding": {
+    "cls": "sim.provider_outage",
+    "detail": "classified provider-side 5 min after impact from client signals alone (status page: ~1 min); recovery visible 10 min after it happened; before the outage the revoked-key client alone -> ['customer-side']; 3 P1 updates generated, lint problems 0"
+  }
+}

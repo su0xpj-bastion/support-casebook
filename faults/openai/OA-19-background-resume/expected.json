@@ -1,0 +1,10 @@
+{
+  "status": 200,
+  "mode": "responses",
+  "drop_after": 3,
+  "provenance": {
+    "resume_param": "doc-verbatim",
+    "drop_point": "synthesized"
+  },
+  "notes": "Docs: GET /v1/responses/{id}?stream=true&starting_after=<sequence_number> resumes a background stream."
+}

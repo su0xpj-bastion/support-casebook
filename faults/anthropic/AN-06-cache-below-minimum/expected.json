@@ -1,0 +1,9 @@
+{
+  "status": 200,
+  "mode": "generic",
+  "headers": {},
+  "provenance": {
+    "behaviour": "doc-verbatim"
+  },
+  "notes": "Docs: prompts below the minimum cacheable length are processed without caching and without an error; both cache fields are 0."
+}

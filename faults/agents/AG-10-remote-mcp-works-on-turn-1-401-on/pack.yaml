@@ -1,0 +1,19 @@
+id: AG-10
+kind: anomaly
+title: 'Remote MCP works on turn 1, 401 on turn 2: authorization not stored'
+provider: openai
+surface: agent
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- full message history of the failing turn
+- tools array
+- request-ids
+docs:
+- https://developers.openai.com/api/docs/guides/tools-connectors-mcp
+expect_requests: {}
+runs_real_sdk: null

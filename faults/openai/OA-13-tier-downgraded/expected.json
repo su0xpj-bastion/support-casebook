@@ -1,0 +1,13 @@
+{
+  "status": 200,
+  "mode": "success",
+  "headers": {},
+  "body_merge": {
+    "service_tier": "default"
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "response.service_tier": "doc-verbatim"
+  },
+  "notes": "Docs: requests over the ramp limit are served (and billed) at service_tier default."
+}

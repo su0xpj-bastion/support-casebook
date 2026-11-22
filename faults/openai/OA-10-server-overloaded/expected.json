@@ -1,0 +1,22 @@
+{
+  "status": 503,
+  "headers": {
+    "retry-after": "1"
+  },
+  "body": {
+    "error": {
+      "message": "The server is overloaded. Please try again later.",
+      "type": "service_unavailable_error",
+      "param": null,
+      "code": "server_is_overloaded"
+    }
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.code": "doc-verbatim",
+    "error.type": "doc-verbatim",
+    "error.message": "synthesized",
+    "headers.retry-after": "synthesized"
+  },
+  "notes": "Docs: capacity of the model, not the account; honor Retry-After. retry-after value here is illustrative."
+}

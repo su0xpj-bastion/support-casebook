@@ -1,0 +1,28 @@
+id: OA-12
+kind: error
+title: Flex 429 Resource Unavailable read as a rate limit
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+live_tier: L2
+retry: Y
+verdict:
+  cls: capacity.flex
+  retryable: Y
+  owner: provider
+request:
+  service_tier: flex
+looks_like:
+- OA-01
+- OA-02
+evidence_required:
+- request service_tier
+- status
+- not charged
+docs:
+- https://developers.openai.com/api/docs/guides/flex-processing
+expect_requests:
+  python_sdk_default: 3
+  policy: 3
+  ts_sdk_default: 3

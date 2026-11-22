@@ -1,0 +1,30 @@
+id: OA-14
+kind: error
+title: Client timeout with no x-request-id — and SDK retries resend the work
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+retry: C
+verdict:
+  cls: client.timeout
+  retryable: C
+  owner: customer
+client:
+  timeout: 0.5
+request_headers:
+  X-Client-Request-Id: claims-svc-7f3a-0001
+looks_like:
+- OA-10
+- network.connection
+evidence_required:
+- X-Client-Request-Id
+- UTC timestamp
+- org/project
+docs:
+- https://developers.openai.com/api/reference/overview
+- https://github.com/openai/openai-python
+expect_requests:
+  python_sdk_default: 3
+  policy: 1
+  ts_sdk_default: 3

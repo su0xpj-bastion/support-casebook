@@ -1,0 +1,31 @@
+id: OA-07
+kind: error
+title: 401 Incorrect API key provided
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+live_tier: L2
+retry: N
+verdict:
+  cls: auth.invalid
+  retryable: N
+  owner: customer
+looks_like:
+- OA-37 (IP allowlist 401)
+- no-org-membership 401
+evidence_required:
+- status
+- error.code
+- key prefix (redacted)
+- OpenAI-Organization/Project
+docs:
+- https://developers.openai.com/api/docs/guides/error-codes
+expect_requests:
+  python_sdk_default: 1
+  policy: 1
+  ts_sdk_default: 1
+live_findings:
+- date: '2026-11-19'
+  observed: real 401 has no x-should-retry header; error.type invalid_request_error and code invalid_api_key matched; body also has a top-level "status" field; headers include x-openai-ide-error-code and x-error-json (base64 copy of the error body).
+  meaning: redaction must decode x-error-json — a plain-text scan cannot see a secret inside base64.

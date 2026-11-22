@@ -1,0 +1,18 @@
+{
+  "status": 400,
+  "headers": {},
+  "body": {
+    "type": "error",
+    "error": {
+      "type": "invalid_request_error",
+      "message": "You have reached your specified workspace API usage limits. You will regain access on {regain_date} at 00:00 UTC."
+    },
+    "request_id": "{request_id}"
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.type": "doc-verbatim",
+    "error.message": "doc-partial"
+  },
+  "notes": "Docs give the message prefix only. No details.error_code is documented, so triage must match on message \u2014 which the SDK warns can change."
+}

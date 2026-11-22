@@ -1,0 +1,25 @@
+id: AN-14
+kind: error
+title: 'All prod keys die at once: workspace archived (same 401 as AN-13)'
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2
+retry: N
+verdict:
+  cls: auth.invalid
+  retryable: N
+  owner: customer
+looks_like:
+- AN-13
+evidence_required:
+- every key in the workspace fails at once
+- Console workspace state
+- audit of who archived
+docs:
+- https://platform.claude.com/docs/en/build-with-claude/workspaces
+expect_requests:
+  python_sdk_default: 1
+  policy: 1
+  ts_sdk_default: 1

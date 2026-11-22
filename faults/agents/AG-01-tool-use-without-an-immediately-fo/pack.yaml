@@ -1,0 +1,20 @@
+id: AG-01
+kind: anomaly
+title: tool_use without an immediately following tool_result (or text first) -> 400
+provider: anthropic
+surface: agent
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- full message history of the failing turn
+- tools array
+- request-ids
+docs:
+- https://platform.claude.com/docs/en/agents-and-tools/tool-use/server-tools
+- https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls
+expect_requests: {}
+runs_real_sdk: null

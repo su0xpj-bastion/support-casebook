@@ -1,0 +1,20 @@
+id: AN-56
+kind: anomaly
+title: OTel exporter variables in project settings are ignored
+provider: anthropic
+surface: claude_code
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- CLI version
+- auth method in use
+- proxy / CA env
+- settings layer (managed/user/project)
+docs:
+- https://code.claude.com/docs/en/monitoring-usage
+expect_requests: {}
+runs_real_sdk: Claude Code 2.1.329 (bundled with claude-agent-sdk)

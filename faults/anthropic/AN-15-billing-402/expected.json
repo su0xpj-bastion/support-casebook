@@ -1,0 +1,18 @@
+{
+  "status": 402,
+  "headers": {},
+  "body": {
+    "type": "error",
+    "error": {
+      "type": "billing_error",
+      "message": "There is an issue with your billing or payment information."
+    },
+    "request_id": "{request_id}"
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.type": "doc-verbatim",
+    "error.message": "doc-partial"
+  },
+  "notes": "Message adapted from the docs' description of 402."
+}

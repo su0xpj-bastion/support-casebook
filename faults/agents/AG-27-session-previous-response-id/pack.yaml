@@ -1,0 +1,19 @@
+id: AG-27
+kind: anomaly
+title: 'Session + previous_response_id: mutually exclusive state options'
+provider: openai
+surface: agent
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- full message history of the failing turn
+- tools array
+- request-ids
+docs:
+- https://openai.github.io/openai-agents-python/
+expect_requests: {}
+runs_real_sdk: openai-agents

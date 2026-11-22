@@ -1,0 +1,10 @@
+{
+  "status": null,
+  "mode": "client",
+  "headers": {},
+  "provenance": {
+    "behaviour": "doc-verbatim",
+    "exception.message": "live-captured"
+  },
+  "notes": "SDK estimates 3600 s * max_tokens / 128000; above 600 s it raises ValueError before sending. Message captured from anthropic 2.9.0."
+}

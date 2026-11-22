@@ -1,0 +1,20 @@
+id: AG-28
+kind: anomaly
+title: Side effect happened before a timeout; replaying the turn repeats it
+provider: openai
+surface: agent
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- full message history of the failing turn
+- tools array
+- request-ids
+docs:
+- https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls
+- https://developers.openai.com/api/docs/guides/function-calling
+expect_requests: {}
+runs_real_sdk: null

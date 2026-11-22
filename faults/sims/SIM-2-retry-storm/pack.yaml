@@ -1,0 +1,16 @@
+id: SIM-2
+kind: sim
+title: Retry storm — the same demand, three client retry strategies, one capacity incident
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+retry: '-'
+verdict: {cls: sim.retry_amplification}
+looks_like: [OA-01, OA-03, OA-10]
+evidence_required: [requests per logical call, client retry settings, recovery time after capacity returned]
+docs:
+- https://developers.openai.com/api/docs/guides/rate-limits
+- https://status.openai.com/
+expect_requests: {}
+covers: [OA-03]

@@ -1,0 +1,23 @@
+id: ID-05
+kind: anomaly
+title: OAuth redirect_uri mismatch (trailing slash, http vs https)
+provider: generic
+surface: identity
+endpoint: '-'
+tier: L1
+live_tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- decoded assertion / token claims
+- IdP app assignment and groups
+- SP configuration
+- timestamps
+docs:
+- https://www.rfc-editor.org/rfc/rfc6749
+scope: protocol
+expect_requests: {}
+modelled_not_real: Policy decisions are casebook's model of the vendor docs; crypto
+  (signxml, PyJWT) is real. Not Anthropic's or OpenAI's systems.

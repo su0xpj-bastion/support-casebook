@@ -1,0 +1,20 @@
+id: AN-24
+kind: anomaly
+title: 'Batch results ''lost'' or mismatched: out of order, errored, expired'
+provider: anthropic
+surface: api
+endpoint: /v1/messages/batches
+tier: L1
+live_tier: L2
+retry: C
+verdict:
+  cls: batch.reconcile
+looks_like: []
+evidence_required:
+- batch id
+- request_counts
+- custom_id per result
+docs:
+- https://platform.claude.com/docs/en/build-with-claude/batch-processing
+expect_requests:
+  python_sdk_default: 1

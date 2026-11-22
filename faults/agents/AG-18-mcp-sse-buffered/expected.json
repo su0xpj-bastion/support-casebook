@@ -1,0 +1,8 @@
+{
+  "status": null,
+  "mode": "generic",
+  "provenance": {
+    "sdk_sends_header": "live-captured",
+    "proxy": "synthesized"
+  }
+}

@@ -1,0 +1,19 @@
+id: AG-12
+kind: anomaly
+title: connector_id rejected on models released after 2026-09-01
+provider: openai
+surface: agent
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- full message history of the failing turn
+- tools array
+- request-ids
+docs:
+- https://developers.openai.com/api/docs/guides/tools-connectors-mcp
+expect_requests: {}
+runs_real_sdk: null

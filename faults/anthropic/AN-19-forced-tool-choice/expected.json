@@ -1,0 +1,9 @@
+{
+  "status": 400,
+  "mode": "generic",
+  "provenance": {
+    "message": "doc-verbatim",
+    "models": "doc-verbatim"
+  },
+  "notes": "Also returned by the token-counting endpoint."
+}

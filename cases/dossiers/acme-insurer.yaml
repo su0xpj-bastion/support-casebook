@@ -1,0 +1,19 @@
+# FICTIONAL named strategic account (Anthropic side).
+account: Acme Mutual Insurance (fictional)
+provider: anthropic
+tier: strategic
+platforms: [first_party, bedrock]
+models_in_use: [claude-sonnet-4-5-20250929, claude-opus-5-5]
+use_cases:
+  - claims intake triage (high volume, batch overnight)
+  - adjuster copilot (interactive, streaming)
+dependencies:
+  - {name: anthropic, version: "1.4.2", upgrade_planned: "2026-12-08"}
+contacts:
+  CSM: Dana Ito (fictional)
+  AE: Sam Okafor (fictional)
+  Applied AI: Lee Park (fictional)
+  Customer eng lead: Priya Nair (fictional)
+cadence: weekly sync Tuesdays; shared Slack #acme-claude
+code_paths:
+  - ../samples/acme-insurer

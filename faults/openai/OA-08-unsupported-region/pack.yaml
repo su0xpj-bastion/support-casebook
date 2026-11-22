@@ -1,0 +1,25 @@
+id: OA-08
+kind: error
+title: 403 country, region, or territory not supported
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+retry: N
+verdict:
+  cls: auth.region
+  retryable: N
+  owner: customer
+looks_like:
+- OA-09 (project key 403)
+- OA-37 (IP allowlist)
+evidence_required:
+- status
+- error.message
+- egress IP / region
+docs:
+- https://developers.openai.com/api/docs/guides/error-codes
+expect_requests:
+  python_sdk_default: 1
+  policy: 1
+  ts_sdk_default: 1

@@ -1,0 +1,20 @@
+id: AN-07
+kind: anomaly
+title: 'Caching broke after deploy: tool order changed'
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2
+retry: '-'
+verdict:
+  cls: cache.prefix_drift
+looks_like:
+- AN-06
+evidence_required:
+- cache fields per call
+- diff of tools/system between calls
+docs:
+- https://platform.claude.com/docs/en/build-with-claude/prompt-caching
+expect_requests:
+  python_sdk_default: 3

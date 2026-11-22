@@ -1,0 +1,14 @@
+id: SIM-1
+kind: sim
+title: Provider outage — classify 'platform-side' from client signals before the status page
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+retry: '-'
+verdict: {cls: sim.provider_outage}
+looks_like: [OA-10, OA-14, network.connection]
+evidence_required: [error mix across clients, endpoints affected, status page state, one customer-side control]
+docs:
+- https://status.openai.com/
+expect_requests: {}

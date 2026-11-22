@@ -1,0 +1,8 @@
+{
+  "status": null,
+  "mode": "outage",
+  "outage_start_s": 3.0,
+  "outage_end_s": 9.0,
+  "provenance": {"incident_shape": "doc-partial", "timings": "synthesized", "status_post_at_plus_1": "doc-verbatim"},
+  "notes": "Shape from OpenAI's 2024-12-11 write-up: API, ChatGPT and platform login down together; connection-level failures (DNS/service discovery); status page posted about 1 minute after impact. Compressed: 1 s here stands for 1 minute."
+}

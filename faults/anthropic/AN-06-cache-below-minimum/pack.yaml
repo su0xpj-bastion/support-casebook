@@ -1,0 +1,21 @@
+id: AN-06
+kind: anomaly
+title: 'cache_control set, cache never used: prefix below the minimum'
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2
+retry: '-'
+verdict:
+  cls: cache.below_minimum
+looks_like:
+- AN-07
+evidence_required:
+- usage.cache_creation_input_tokens
+- usage.cache_read_input_tokens
+- prefix token count
+docs:
+- https://platform.claude.com/docs/en/build-with-claude/prompt-caching
+expect_requests:
+  python_sdk_default: 2

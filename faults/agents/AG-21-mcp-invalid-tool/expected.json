@@ -1,0 +1,8 @@
+{
+  "status": null,
+  "mode": "generic",
+  "provenance": {
+    "sdk_behaviour": "live-captured",
+    "spec_rule": "doc-verbatim"
+  }
+}

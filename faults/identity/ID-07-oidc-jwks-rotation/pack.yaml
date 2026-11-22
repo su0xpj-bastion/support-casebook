@@ -1,0 +1,23 @@
+id: ID-07
+kind: anomaly
+title: 'OIDC: key rotated and old key removed at once; strict issuer/audience'
+provider: generic
+surface: identity
+endpoint: '-'
+tier: L1
+live_tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- decoded assertion / token claims
+- IdP app assignment and groups
+- SP configuration
+- timestamps
+docs:
+- https://openid.net/specs/openid-connect-core-1_0.html
+scope: protocol
+expect_requests: {}
+modelled_not_real: Policy decisions are casebook's model of the vendor docs; crypto
+  (signxml, PyJWT) is real. Not Anthropic's or OpenAI's systems.

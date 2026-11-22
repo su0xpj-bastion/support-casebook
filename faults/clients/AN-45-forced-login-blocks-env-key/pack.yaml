@@ -1,0 +1,21 @@
+id: AN-45
+kind: anomaly
+title: Managed forceLoginOrgUUID blocks an env API key at startup
+provider: anthropic
+surface: claude_code
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- CLI version
+- auth method in use
+- proxy / CA env
+- settings layer (managed/user/project)
+docs:
+- https://code.claude.com/docs/en/iam
+- https://code.claude.com/docs/en/settings
+expect_requests: {}
+runs_real_sdk: Claude Code 2.1.329 (bundled with claude-agent-sdk)

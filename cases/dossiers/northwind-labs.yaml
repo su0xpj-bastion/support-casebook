@@ -1,0 +1,14 @@
+# FICTIONAL scale-up account (OpenAI side).
+account: Northwind Labs (fictional)
+provider: openai
+tier: growth
+platforms: [first_party]
+models_in_use: [gpt-4o, gpt-6-luna]
+dependencies:
+  - {name: openai, version: "3.40.0"}
+contacts:
+  Technical Success: Ari Gold (fictional)
+  Customer eng lead: Mei Chen (fictional)
+cadence: ticket + monthly review
+code_paths:
+  - ../samples/northwind-labs

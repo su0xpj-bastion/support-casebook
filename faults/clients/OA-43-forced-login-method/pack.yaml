@@ -1,0 +1,20 @@
+id: OA-43
+kind: anomaly
+title: 'forced_login_method=chatgpt with a stored API key: Codex logs out and exits'
+provider: openai
+surface: codex
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- CLI version
+- auth method in use
+- proxy / CA env
+- settings layer (managed/user/project)
+docs:
+- https://learn.chatgpt.com/docs/auth
+expect_requests: {}
+runs_real_sdk: '@openai/codex 0.171.0 (ts/)'

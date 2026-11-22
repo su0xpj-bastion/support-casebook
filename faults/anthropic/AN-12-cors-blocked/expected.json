@@ -1,0 +1,18 @@
+{
+  "status": 401,
+  "headers": {},
+  "body": {
+    "type": "error",
+    "error": {
+      "type": "authentication_error",
+      "message": "CORS requests are not allowed for this Organization because of its data retention or compliance settings."
+    },
+    "request_id": "{request_id}"
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.message": "doc-partial",
+    "error.type": "synthesized"
+  },
+  "notes": "Docs quote the prefix. Enabling the Compliance API blocks direct browser calls, including in linked Console orgs."
+}

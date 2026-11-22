@@ -1,0 +1,18 @@
+{
+  "status": 401,
+  "headers": {},
+  "body": {
+    "type": "error",
+    "error": {
+      "type": "authentication_error",
+      "message": "invalid x-api-key"
+    },
+    "request_id": "{request_id}"
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.type": "doc-verbatim",
+    "error.message": "live-captured"
+  },
+  "notes": "Live capture 2026-11-19 (python, unauthenticated) matched these fields."
+}

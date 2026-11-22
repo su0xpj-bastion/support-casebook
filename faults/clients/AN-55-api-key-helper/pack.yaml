@@ -1,0 +1,21 @@
+id: AN-55
+kind: anomaly
+title: 'apiKeyHelper fails: request still sent with an empty bearer token'
+provider: anthropic
+surface: claude_code
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- CLI version
+- auth method in use
+- proxy / CA env
+- settings layer (managed/user/project)
+docs:
+- https://code.claude.com/docs/en/iam
+- https://code.claude.com/docs/en/settings
+expect_requests: {}
+runs_real_sdk: Claude Code 2.1.329 (bundled with claude-agent-sdk)

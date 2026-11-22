@@ -1,0 +1,23 @@
+id: AN-35
+kind: anomaly
+title: 'Require SSO for Claude: personal accounts on the domain become unreachable'
+provider: anthropic
+surface: identity
+endpoint: '-'
+tier: L1
+live_tier: L3 (needs a real Claude/ChatGPT/OpenAI enterprise tenant)
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- decoded assertion / token claims
+- IdP app assignment and groups
+- SP configuration
+- timestamps
+docs:
+- https://support.claude.com/en/articles/10276682-important-considerations-before-enabling-s
+scope: vendor-policy
+expect_requests: {}
+modelled_not_real: Policy decisions are casebook's model of the vendor docs; crypto
+  (signxml, PyJWT) is real. Not Anthropic's or OpenAI's systems.

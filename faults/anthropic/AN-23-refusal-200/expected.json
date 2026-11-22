@@ -1,0 +1,13 @@
+{
+  "status": 200,
+  "mode": "success",
+  "body_merge": {
+    "content": [],
+    "stop_reason": "refusal"
+  },
+  "provenance": {
+    "stop_reason": "doc-verbatim",
+    "content": "synthesized"
+  },
+  "notes": ""
+}

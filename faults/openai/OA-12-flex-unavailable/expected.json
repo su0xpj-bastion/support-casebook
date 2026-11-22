@@ -1,0 +1,21 @@
+{
+  "status": 429,
+  "headers": {
+    "retry-after": "1"
+  },
+  "body": {
+    "error": {
+      "message": "Resource Unavailable",
+      "type": "rate_limit_error",
+      "param": null,
+      "code": null
+    }
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.message": "doc-partial",
+    "error.type": "synthesized",
+    "headers.retry-after": "synthesized"
+  },
+  "notes": "Docs: flex capacity shortfalls return 429 Resource Unavailable and are not charged; flex also returns 408 on timeouts. Body codes undocumented."
+}

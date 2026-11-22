@@ -1,0 +1,7 @@
+{
+  "policy": {
+    "min_flaky_commits": 1,
+    "release_after": 30
+  },
+  "tests": []
+}

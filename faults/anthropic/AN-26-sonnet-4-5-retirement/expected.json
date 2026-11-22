@@ -1,0 +1,11 @@
+{
+  "status": 404,
+  "mode": "generic",
+  "provenance": {
+    "date": "doc-verbatim",
+    "replacement": "doc-verbatim",
+    "status": "synthesized",
+    "message": "synthesized"
+  },
+  "notes": "Docs: 'Requests to retired models fail.' The status and message are not published \u2014 capture live on 2026-12-01 to replace the synthesized 404."
+}

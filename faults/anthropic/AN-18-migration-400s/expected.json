@@ -1,0 +1,12 @@
+{
+  "status": 400,
+  "mode": "generic",
+  "provenance": {
+    "prefill.message": "doc-verbatim",
+    "thinking.message": "doc-verbatim",
+    "computer_tool.message": "doc-verbatim",
+    "sampling.removed_in_2026-10-21": "doc-verbatim",
+    "sampling.message": "synthesized"
+  },
+  "notes": "Each broken request is paired with the documented fix, which the mock accepts."
+}

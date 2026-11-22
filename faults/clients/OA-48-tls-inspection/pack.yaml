@@ -1,0 +1,20 @@
+id: OA-48
+kind: anomaly
+title: 'Codex behind TLS inspection: ''Reconnecting... waiting for network'' forever'
+provider: openai
+surface: codex
+endpoint: '-'
+tier: L1
+retry: '-'
+verdict:
+  cls: see scenario
+looks_like: []
+evidence_required:
+- CLI version
+- auth method in use
+- proxy / CA env
+- settings layer (managed/user/project)
+docs:
+- https://learn.chatgpt.com/docs/auth
+expect_requests: {}
+runs_real_sdk: '@openai/codex 0.171.0 (ts/)'

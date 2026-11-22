@@ -1,0 +1,20 @@
+id: AN-20
+kind: anomaly
+title: Thinking-signature 400 after editing earlier history
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2
+retry: N
+verdict:
+  cls: thinking.signature_bound
+looks_like:
+- AG-01
+evidence_required:
+- messages.{i}.content.{j} position
+- what the client changed in history
+docs:
+- https://platform.claude.com/docs/en/api/errors
+expect_requests:
+  python_sdk_default: 2

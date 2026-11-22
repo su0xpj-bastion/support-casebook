@@ -1,0 +1,18 @@
+{
+  "status": 529,
+  "headers": {},
+  "body": {
+    "type": "error",
+    "error": {
+      "type": "overloaded_error",
+      "message": "Overloaded"
+    },
+    "request_id": "{request_id}"
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.type": "doc-verbatim",
+    "error.message": "doc-verbatim"
+  },
+  "notes": "Message 'Overloaded' is quoted from the docs' streaming error example. No retry-after is documented for 529."
+}

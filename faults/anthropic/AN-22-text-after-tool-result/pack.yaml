@@ -1,0 +1,22 @@
+id: AN-22
+kind: anomaly
+title: Near-empty reply after a tool result (text appended after tool_result)
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2
+retry: N
+verdict:
+  cls: tools.text_after_result
+looks_like:
+- AG-01
+evidence_required:
+- last user turn block order
+- output_tokens
+- stop_reason
+docs:
+- https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons
+- https://platform.claude.com/docs/en/agents-and-tools/tool-use/implement-tool-use
+expect_requests:
+  python_sdk_default: 2

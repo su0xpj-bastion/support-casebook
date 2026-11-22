@@ -1,0 +1,22 @@
+id: AN-19
+kind: anomaly
+title: Forced tool_choice works on Sonnet 4.5, 400 on Sonnet 5.5
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2
+retry: N
+verdict:
+  cls: migration.forced_tool_choice
+looks_like:
+- AN-18
+evidence_required:
+- model id
+- tool_choice
+- error.message
+docs:
+- https://platform.claude.com/docs/en/api/errors
+- https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools
+expect_requests:
+  python_sdk_default: 3

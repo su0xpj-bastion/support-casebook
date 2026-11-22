@@ -1,0 +1,25 @@
+id: OA-04
+title: Prepaid credit balance exhausted
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+retry: N
+verdict:
+  cls: billing.credits_exhausted
+  retryable: N
+  owner: customer-admin
+looks_like:
+- OA-01
+- OA-02
+- OA-05
+evidence_required:
+- http.status
+- error.code
+docs:
+- https://developers.openai.com/api/docs/guides/error-codes
+kind: error
+expect_requests:
+  python_sdk_default: 3
+  policy: 1
+  ts_sdk_default: 3

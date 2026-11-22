@@ -1,0 +1,27 @@
+id: AN-02
+title: Self-set workspace spend limit returns 400, not 429
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2 (set a tiny workspace spend limit on a personal Console org)
+retry: N
+verdict:
+  cls: billing.self_set_spend_limit
+  retryable: N
+  owner: customer-admin
+looks_like:
+- request.invalid
+- AN-01
+evidence_required:
+- http.status
+- error.message prefix
+- anthropic-workspace-id
+docs:
+- https://platform.claude.com/docs/en/api/rate-limits
+kind: error
+expect_requests:
+  python_sdk_default: 1
+  policy: 1
+  ts_sdk_default: 1
+live_setup: "In Claude Console, create a workspace 'casebook-live', set its monthly spend limit to the minimum, use up the limit with a few small calls (or set it below current usage), and export a key for that workspace as ANTHROPIC_API_KEY."

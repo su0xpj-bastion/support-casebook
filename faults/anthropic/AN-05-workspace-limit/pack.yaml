@@ -1,0 +1,27 @@
+id: AN-05
+kind: error
+title: 'One workspace starves: workspace token limit is the binding one'
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2
+retry: Y
+verdict:
+  cls: limits.workspace
+  retryable: Y
+  owner: customer-admin
+looks_like:
+- AN-04
+- AN-03
+evidence_required:
+- anthropic-ratelimit-tokens-*
+- anthropic-ratelimit-input-tokens-*
+- anthropic-workspace-id
+docs:
+- https://platform.claude.com/docs/en/api/rate-limits
+- https://platform.claude.com/docs/en/build-with-claude/workspaces
+expect_requests:
+  python_sdk_default: 3
+  policy: 3
+  ts_sdk_default: 3

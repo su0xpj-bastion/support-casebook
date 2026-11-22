@@ -1,0 +1,24 @@
+id: AN-18
+kind: anomaly
+title: 'Migration 400s on newest models: prefill, thinking.enabled, sampling params,
+  old computer tool'
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2
+retry: N
+verdict:
+  cls: migration.400s
+looks_like:
+- AN-19
+- AN-21
+evidence_required:
+- model id
+- anthropic-version sent
+- error.message
+docs:
+- https://platform.claude.com/docs/en/api/errors
+- https://platform.claude.com/docs/en/about-claude/model-deprecations
+expect_requests:
+  python_sdk_default: 8

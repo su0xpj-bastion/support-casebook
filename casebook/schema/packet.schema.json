@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Support Packet",
+  "type": "object",
+  "required": [
+    "packet_version",
+    "case_id",
+    "received_utc",
+    "channel",
+    "provider",
+    "request_ids",
+    "http",
+    "error",
+    "redactions",
+    "warnings"
+  ],
+  "properties": {
+    "packet_version": {
+      "const": 1
+    },
+    "case_id": {
+      "type": "string",
+      "pattern": "^CB-\\d{4}-\\d{4,}$"
+    },
+    "received_utc": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+    },
+    "channel": {
+      "enum": [
+        "sdk",
+        "ticket",
+        "slack",
+        "email",
+        "call_note"
+      ]
+    },
+    "provider": {
+      "enum": [
+        "openai",
+        "anthropic",
+        "bedrock",
+        "vertex",
+        "keycloak-lab",
+        null
+      ]
+    },
+    "endpoint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "model": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sdk": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "org_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "project_or_workspace": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "request_ids": {
+      "type": "object",
+      "required": [
+        "provider",
+        "client",
+        "cloud"
+      ],
+      "properties": {
+        "provider": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "client": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cloud": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "http": {
+      "type": "object",
+      "required": [
+        "status",
+        "retry_after"
+      ],
+      "properties": {
+        "status": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "retry_after": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "required": [
+        "type",
+        "code",
+        "details_error_code",
+        "message"
+      ]
+    },
+    "rate_headers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "provenance": {
+      "enum": [
+        "doc-verbatim",
+        "doc-partial",
+        "live-captured",
+        "synthesized",
+        null
+      ]
+    },
+    "redactions": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "stream_error": {
+      "type": "boolean"
+    },
+    "request_meta": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  }
+}

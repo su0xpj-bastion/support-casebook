@@ -1,0 +1,25 @@
+id: OA-06
+title: Organization approved usage limit reached
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+retry: N
+verdict:
+  cls: billing.usage_limit
+  retryable: N
+  owner: customer-admin
+looks_like:
+- OA-05
+- OA-04
+evidence_required:
+- http.status
+- error.code
+docs:
+- https://developers.openai.com/api/docs/guides/error-codes
+- https://developers.openai.com/api/docs/guides/rate-limits
+kind: error
+expect_requests:
+  python_sdk_default: 3
+  policy: 1
+  ts_sdk_default: 3

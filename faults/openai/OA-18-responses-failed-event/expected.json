@@ -1,0 +1,10 @@
+{
+  "status": 200,
+  "mode": "responses",
+  "provenance": {
+    "event": "doc-verbatim",
+    "error.code": "synthesized",
+    "error.message": "synthesized"
+  },
+  "notes": "Docs: streaming errors arrive as error / response.failed events. The SDK raises nothing; the iterator just ends."
+}

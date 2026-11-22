@@ -1,0 +1,7 @@
+{
+  "status": 200,
+  "mode": "degraded_slice",
+  "rates": {"first_party": 0.16, "bedrock": 0.0018, "vertex": 0.000004},
+  "provenance": {"rates_by_platform": "doc-verbatim", "sticky_routing": "doc-verbatim", "corruption_text": "doc-partial", "detectors": "synthesized"},
+  "notes": "Rates and sticky routing from Anthropic's 2025-09-17 postmortem (peak 16% of Sonnet 4 requests on 08-31; Bedrock 0.18%; Vertex <0.0004%). Corruption modelled on the 'Thai or Chinese characters in English responses' symptom. Every response is HTTP 200."
+}

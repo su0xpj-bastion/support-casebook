@@ -1,0 +1,26 @@
+{
+  "status": 429,
+  "headers": {
+    "retry-after": "1",
+    "anthropic-ratelimit-tokens-limit": "50000",
+    "anthropic-ratelimit-tokens-remaining": "0",
+    "anthropic-ratelimit-input-tokens-limit": "2000000",
+    "anthropic-ratelimit-input-tokens-remaining": "1950000"
+  },
+  "body": {
+    "type": "error",
+    "error": {
+      "type": "rate_limit_error",
+      "message": "This request would exceed the rate limit for your workspace."
+    },
+    "request_id": "{request_id}"
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "error.type": "doc-verbatim",
+    "headers.names": "doc-verbatim",
+    "error.message": "synthesized",
+    "headers.values": "synthesized"
+  },
+  "notes": "Docs: anthropic-ratelimit-tokens-* show the most restrictive limit in effect (e.g. a workspace limit). Rule is a header heuristic."
+}

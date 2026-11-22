@@ -1,0 +1,20 @@
+id: OA-18
+kind: anomaly
+title: Responses stream returns 200, then response.failed
+provider: openai
+surface: api
+endpoint: /v1/responses
+tier: L1
+retry: C
+verdict:
+  cls: stream.failed_event
+looks_like:
+- AN-09
+evidence_required:
+- last event type
+- response.error
+- x-request-id
+docs:
+- https://developers.openai.com/api/docs/guides/streaming-responses
+expect_requests:
+  python_sdk_default: 1

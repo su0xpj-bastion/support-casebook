@@ -1,0 +1,10 @@
+{
+  "status": 400,
+  "mode": "generic",
+  "provenance": {
+    "version_sent": "live-captured",
+    "sampling_removed": "doc-verbatim",
+    "message": "synthesized"
+  },
+  "notes": "anthropic 2.9.0 sends anthropic-version 2026-10-21 (read from the installed SDK). Python 2.0.0 / TS 1.0.0 were the first to do so."
+}

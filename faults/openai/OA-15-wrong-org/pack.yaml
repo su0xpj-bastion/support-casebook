@@ -1,0 +1,18 @@
+id: OA-15
+kind: anomaly
+title: Usage billed to the wrong organization
+provider: openai
+surface: api
+endpoint: /v1/chat/completions
+tier: L1
+retry: '-'
+verdict:
+  cls: billing.wrong_org
+looks_like: []
+evidence_required:
+- openai-organization response header
+- OpenAI-Organization / OpenAI-Project request headers
+docs:
+- https://developers.openai.com/api/reference/overview
+expect_requests:
+  python_sdk_default: 1

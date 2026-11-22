@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "mode": "success",
+  "headers": {
+    "openai-organization": "org-personal-sandbox"
+  },
+  "body_merge": {},
+  "provenance": {
+    "status": "doc-verbatim",
+    "headers.openai-organization": "doc-verbatim",
+    "value": "synthesized"
+  },
+  "notes": "A user key that belongs to several orgs bills its default org unless OpenAI-Organization is set."
+}

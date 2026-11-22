@@ -1,0 +1,30 @@
+id: AN-13
+kind: error
+title: 401 after key rotation or offboarding
+provider: anthropic
+surface: api
+endpoint: /v1/messages
+tier: L1
+live_tier: L2
+retry: N
+verdict:
+  cls: auth.invalid
+  retryable: N
+  owner: customer
+looks_like:
+- AN-14
+- AN-12
+evidence_required:
+- key prefix (redacted)
+- key expires_at / principal (Admin API)
+- workspace state
+docs:
+- https://platform.claude.com/docs/en/api/errors
+- https://platform.claude.com/docs/en/build-with-claude/administration-api
+expect_requests:
+  python_sdk_default: 1
+  policy: 1
+  ts_sdk_default: 1
+live_findings:
+- date: '2026-11-19'
+  observed: real 401 carries x-should-retry false, request-id header, and request_id in the body; message 'invalid x-api-key' matched.

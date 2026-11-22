@@ -1,0 +1,166 @@
+{
+  "full_suite_seconds": 222.8,
+  "commits": [
+    {
+      "sha": "883077b9",
+      "changed": 88,
+      "run_all": false,
+      "test_files": 14,
+      "nodes": 291,
+      "est_seconds": 220.7,
+      "why_all": []
+    },
+    {
+      "sha": "94b39853",
+      "changed": 51,
+      "run_all": false,
+      "test_files": 14,
+      "nodes": 101,
+      "est_seconds": 169.4,
+      "why_all": []
+    },
+    {
+      "sha": "eb746d6d",
+      "changed": 38,
+      "run_all": true,
+      "test_files": 18,
+      "nodes": 19,
+      "est_seconds": 222.8,
+      "why_all": [
+        "pyproject.toml: can affect every test"
+      ]
+    },
+    {
+      "sha": "df72de55",
+      "changed": 73,
+      "run_all": true,
+      "test_files": 18,
+      "nodes": 63,
+      "est_seconds": 222.8,
+      "why_all": [
+        "pyproject.toml: can affect every test",
+        "requirements.txt: can affect every test"
+      ]
+    },
+    {
+      "sha": "14bebfdb",
+      "changed": 33,
+      "run_all": true,
+      "test_files": 18,
+      "nodes": 18,
+      "est_seconds": 222.8,
+      "why_all": [
+        "requirements.txt: can affect every test"
+      ]
+    },
+    {
+      "sha": "9c155b0c",
+      "changed": 36,
+      "run_all": false,
+      "test_files": 12,
+      "nodes": 24,
+      "est_seconds": 179.5,
+      "why_all": []
+    },
+    {
+      "sha": "c25bda4d",
+      "changed": 66,
+      "run_all": true,
+      "test_files": 18,
+      "nodes": 72,
+      "est_seconds": 222.8,
+      "why_all": [
+        "requirements.txt: can affect every test"
+      ]
+    },
+    {
+      "sha": "e3f5a93b",
+      "changed": 143,
+      "run_all": true,
+      "test_files": 18,
+      "nodes": 19,
+      "est_seconds": 222.8,
+      "why_all": [
+        ".github/workflows/ci.yml: can affect every test",
+        ".github/workflows/doc-drift.yml: can affect every test"
+      ]
+    },
+    {
+      "sha": "2b0fffab",
+      "changed": 18,
+      "run_all": false,
+      "test_files": 12,
+      "nodes": 0,
+      "est_seconds": 169.4,
+      "why_all": []
+    },
+    {
+      "sha": "a5c2884f",
+      "changed": 9,
+      "run_all": false,
+      "test_files": 2,
+      "nodes": 0,
+      "est_seconds": 20.1,
+      "why_all": []
+    },
+    {
+      "sha": "eef11b09",
+      "changed": 1,
+      "run_all": false,
+      "test_files": 0,
+      "nodes": 0,
+      "est_seconds": 0,
+      "why_all": []
+    },
+    {
+      "sha": "5213616c",
+      "changed": 1,
+      "run_all": false,
+      "test_files": 0,
+      "nodes": 0,
+      "est_seconds": 0,
+      "why_all": []
+    },
+    {
+      "sha": "e0dbabd1",
+      "changed": 12,
+      "run_all": true,
+      "test_files": 18,
+      "nodes": 0,
+      "est_seconds": 222.8,
+      "why_all": [
+        ".github/workflows/ci.yml: can affect every test"
+      ]
+    },
+    {
+      "sha": "f842e0bf",
+      "changed": 29,
+      "run_all": true,
+      "test_files": 18,
+      "nodes": 0,
+      "est_seconds": 222.8,
+      "why_all": [
+        ".github/workflows/ci-shards.yml: can affect every test",
+        ".github/workflows/ci.yml: can affect every test"
+      ]
+    },
+    {
+      "sha": "cbf9f695",
+      "changed": 12,
+      "run_all": false,
+      "test_files": 0,
+      "nodes": 0,
+      "est_seconds": 0,
+      "why_all": []
+    },
+    {
+      "sha": "aa5188c1",
+      "changed": 6,
+      "run_all": false,
+      "test_files": 3,
+      "nodes": 0,
+      "est_seconds": 87.3,
+      "why_all": []
+    }
+  ]
+}

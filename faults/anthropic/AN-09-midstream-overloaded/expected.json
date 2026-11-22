@@ -1,0 +1,20 @@
+{
+  "status": 200,
+  "mode": "sse_error",
+  "partial_text": "Claim #4411: water damage, ",
+  "headers": {},
+  "body": {
+    "type": "error",
+    "error": {
+      "type": "overloaded_error",
+      "message": "Overloaded"
+    }
+  },
+  "provenance": {
+    "status": "doc-verbatim",
+    "event": "doc-verbatim",
+    "error.type": "doc-verbatim",
+    "error.message": "doc-verbatim"
+  },
+  "notes": "Docs streaming example: event: error / overloaded_error, 'would normally correspond to an HTTP 529'. SDKs do not retry: the 200 was already received."
+}

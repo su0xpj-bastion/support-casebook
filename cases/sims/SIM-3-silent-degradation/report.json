@@ -1,0 +1,42 @@
+{
+  "first_party": {
+    "rate": 0.16,
+    "canary_detection_rate": 1.0,
+    "per_session_detection_rate": 1.0,
+    "canary_median_hour": 0,
+    "per_session_median_hour": 0,
+    "affected_sessions_per_day_median": 1144
+  },
+  "bedrock": {
+    "rate": 0.0018,
+    "canary_detection_rate": 0.0,
+    "per_session_detection_rate": 0.9,
+    "canary_median_hour": null,
+    "per_session_median_hour": 11,
+    "affected_sessions_per_day_median": 14
+  },
+  "vertex": {
+    "rate": 4e-06,
+    "canary_detection_rate": 0.0,
+    "per_session_detection_rate": 0.0,
+    "canary_median_hour": null,
+    "per_session_median_hour": null,
+    "affected_sessions_per_day_median": 0
+  },
+  "live_spot_check": {
+    "first_party": {
+      "requests": 120,
+      "bad_answers": 21,
+      "non_200": 0
+    },
+    "bedrock": {
+      "requests": 120,
+      "bad_answers": 0,
+      "non_200": 0
+    }
+  },
+  "finding": {
+    "cls": "sim.silent_degradation",
+    "detail": "16% sticky slice: canary caught it in 100% of runs (median hour 0), per-session probes 100% (hour 0); 0.18% slice: canary 0%, per-session 90% (~14 affected sessions/day); every degraded answer was HTTP 200 (live: 21/120 bad, 0 non-200)"
+  }
+}
