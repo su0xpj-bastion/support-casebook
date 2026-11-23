@@ -1,0 +1,24 @@
+name: suite-api-metrics-analyzer
+on:
+  push:
+    paths:
+      - "suites/api-metrics-analyzer/**"
+      - ".github/workflows/suite-api-metrics-analyzer.yml"
+  pull_request:
+    paths:
+      - "suites/api-metrics-analyzer/**"
+      - ".github/workflows/suite-api-metrics-analyzer.yml"
+defaults:
+  run:
+    working-directory: suites/api-metrics-analyzer
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: tests (mocked OpenAI client, no network)
+        run: python -m pytest -v

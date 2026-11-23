@@ -1,0 +1,8 @@
+{
+  "id": "token-bucket",
+  "issue": "The rate limiter's token bucket never refills past one token, so after a burst every request waits a full interval. Tokens should refill continuously at `rate` per second up to `capacity`. `allow(now)` takes one token if available. Fix `bucket.py`.",
+  "allowed_files": [
+    "bucket.py"
+  ],
+  "module": "bucket.py"
+}

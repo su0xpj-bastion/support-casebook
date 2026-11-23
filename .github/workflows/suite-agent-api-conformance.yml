@@ -1,0 +1,58 @@
+name: suite-agent-api-conformance
+on:
+  push:
+    paths:
+      - "suites/agent-api-conformance/**"
+      - ".github/workflows/suite-agent-api-conformance.yml"
+  pull_request:
+    paths:
+      - "suites/agent-api-conformance/**"
+      - ".github/workflows/suite-agent-api-conformance.yml"
+  workflow_dispatch:
+    inputs:
+      providers:
+        description: "live providers to run (comma-separated, from providers.json)"
+        default: "openai,anthropic,cerebras"
+defaults:
+  run:
+    working-directory: suites/agent-api-conformance
+jobs:
+  mock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: tests (3 protocols, 12 faults pinned)
+        run: python -m pytest -v
+      - name: healthy mock run, matrix to job summary
+        run: python -m ace run --target mock --out reports/mock
+      - name: faulted run must fail
+        run: |
+          if python -m ace run --target mock --faults injection_follows --out reports/faulted; then
+            echo "faulted run passed: a scenario is broken"; exit 1
+          fi
+  live:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: live run (providers without a key are skipped)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+          MODEL_API_KEY: ${{ secrets.MODEL_API_KEY }}
+        run: python -m ace run --target live --providers "${{ inputs.providers }}" --out reports/live
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-report
+          path: suites/agent-api-conformance/reports/live/

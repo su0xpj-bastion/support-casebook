@@ -1,0 +1,55 @@
+name: suite-deep-research-eval
+on:
+  push:
+    paths:
+      - "suites/deep-research-eval/**"
+      - ".github/workflows/suite-deep-research-eval.yml"
+  pull_request:
+    paths:
+      - "suites/deep-research-eval/**"
+      - ".github/workflows/suite-deep-research-eval.yml"
+  workflow_dispatch:
+    inputs:
+      system:
+        description: "live system: perplexity | openai | anthropic"
+        default: "perplexity"
+      limit:
+        description: "questions from the slice (60 = all)"
+        default: "20"
+defaults:
+  run:
+    working-directory: suites/deep-research-eval
+jobs:
+  mock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -v
+      - name: mock run vs baseline, report to job summary
+        run: python -m dre run --repeats 3 --out reports/mock
+      - name: grader vs judge agreement (mock judge)
+        run: python -m dre.judge reports/mock/results.json >> "$GITHUB_STEP_SUMMARY"
+  live:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: live run
+        env:
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m dre run --system "${{ inputs.system }}" --limit "${{ inputs.limit }}" --workers 2 --out reports/live
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-report
+          path: suites/deep-research-eval/reports/live/

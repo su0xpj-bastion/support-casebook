@@ -1,0 +1,8 @@
+{
+  "id": "retry-never-stops",
+  "issue": "`call_with_retry` keeps retrying long after `max_attempts` and then returns None instead of raising, and it also retries `PermanentError`, which should fail immediately. It must stop after `max_attempts` total attempts and re-raise the last error. Fix `retry.py`.",
+  "allowed_files": [
+    "retry.py"
+  ],
+  "module": "retry.py"
+}

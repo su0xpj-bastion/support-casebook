@@ -1,0 +1,23 @@
+{
+  "runs": 8,
+  "resolved": 8,
+  "pass_at_1": 1.0,
+  "pass_at_1_ci95": [
+    0.6755843804891231,
+    1.0
+  ],
+  "consistency": null,
+  "per_task": {
+    "date-range-inclusive": "1/1",
+    "duration-parse": "1/1",
+    "invoice-rounding": "1/1",
+    "lru-eviction": "1/1",
+    "pagination-offbyone": "1/1",
+    "retry-never-stops": "1/1",
+    "slugify-unicode": "1/1",
+    "token-bucket": "1/1"
+  },
+  "layers": {},
+  "rules_failed": {},
+  "mean_seconds": 0.0005443331319838762
+}

@@ -1,5 +1,9 @@
 name: ci
-on: [push, pull_request]
+on:
+  push:
+    paths-ignore: ["suites/**", ".github/workflows/suite-*.yml"]
+  pull_request:
+    paths-ignore: ["suites/**", ".github/workflows/suite-*.yml"]
 jobs:
   test:
     runs-on: macos-latest

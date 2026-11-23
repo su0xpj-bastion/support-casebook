@@ -4,6 +4,7 @@ name: ci-shards
 on:
   push:
     branches: [main]
+    paths-ignore: ["suites/**", ".github/workflows/suite-*.yml"]
   workflow_dispatch: {}
 jobs:
   plan:

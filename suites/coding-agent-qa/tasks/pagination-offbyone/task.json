@@ -1,0 +1,8 @@
+{
+  "id": "pagination-offbyone",
+  "issue": "`paginate(items, page, size)` returns the wrong slice: page 1 skips the first item and the last page drops its final item. Pages are 1-based. Fix `pager.py`.",
+  "allowed_files": [
+    "pager.py"
+  ],
+  "module": "pager.py"
+}

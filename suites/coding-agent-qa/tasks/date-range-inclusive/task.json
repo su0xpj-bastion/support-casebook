@@ -1,0 +1,8 @@
+{
+  "id": "date-range-inclusive",
+  "issue": "`days_between(start, end)` should list every date from start to end **inclusive**, but it leaves out `end`, and it loops forever when `end` is before `start` (it should return an empty list). Fix `daterange.py`.",
+  "allowed_files": [
+    "daterange.py"
+  ],
+  "module": "daterange.py"
+}

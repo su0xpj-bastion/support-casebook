@@ -13,6 +13,7 @@
 | Silent degradation (SIM-3) | at 0.18% of traffic, hourly canaries catch it **0%** of the time; probing 10% of sessions catches it 90% |
 | Triage eval | rules first, LLM fallback behind a guard: **0 false "retry" verdicts**, 0 secret leaks ([report](triage/eval/REPORT.md)) |
 | Real findings | 4 EvalPlus issues, 2 Firefox bugs, Ollama silent truncation, 13 doc/SDK mismatches ([`real/`](real/)) |
+| Suites | 6 more projects in [`suites/`](suites/), each with its own tests and CI: coding-agent grading, MCP server safety, agent API conformance, deep-research eval, streaming latency, support-ticket metrics |
 | CI tooling | change-based test selection (12/12 injected faults caught, 0 misses), flake detection and quarantine, duration-based sharding (3 shards: 3 m 12 s vs 4 m 42 s), 10 failure signatures each reproduced, a local merge queue with bisection ([`docs/ci.md`](docs/ci.md)) |
 
 ```bash
@@ -306,6 +307,19 @@ CI-00  unknown      C  no signature: rerun once, then add one
 
 Not here: Kubernetes or multi-cloud runners, cluster load shedding, GitHub's merge queue (needs an organisation-owned repo).
 
+## Suites
+
+Six more projects live in [`suites/`](suites/). Each keeps its own README, dependencies and tests, and has its own GitHub Actions workflow that runs only when its folder changes.
+
+| Suite | What it is, in plain terms | Tests |
+|---|---|---|
+| [coding-agent-qa](suites/coding-agent-qa/) | Gives an AI coding agent small bugs to fix, grades the fix with tests it never saw, fails it for editing the tests, and decides go / no-go across repeated runs | 39 |
+| [mcp-server-qa](suites/mcp-server-qa/) | A tool server that AI assistants use to read and update incident tickets, plus safety tests: logins, file access, planted instructions; 12 planted bugs, each caught (TypeScript) | 51 |
+| [agent-api-conformance](suites/agent-api-conformance/) | The same 12 agent scenarios (streaming, tools, structured output, caching, prompt injection) run through OpenAI Responses, Anthropic Messages and Chat Completions | 25 |
+| [deep-research-eval](suites/deep-research-eval/) | A release gate for research agents on 60 fixed questions: right, incomplete, padded or wrong, decided with a statistical test | 25 |
+| [token-stream-meter](suites/token-stream-meter/) | Measures how fast a streamed answer arrives: time to first token, gap between tokens, total time | 18 |
+| [api-metrics-analyzer](suites/api-metrics-analyzer/) | Reads API usage metrics from a support ticket and returns a diagnosis with severity, root causes and fixes (Python 3.12, mocked OpenAI client) | 86 |
+
 ## Documentation
 
 | Doc | For |
@@ -355,6 +369,7 @@ casebook/
   mcp_lab/       MCP servers/clients (Python + TS), proxy, OAuth stand-in
   live.py        real-API captures + diff vs expected.json
   ci/            test selection, flake history + quarantine, sharding, failure signatures, merge queue
+suites/          six self-contained projects, each with its own tests and workflow
 ci/              quarantine list, recorded durations, experiment reports
 faults/<provider>/<ID>-<slug>/  pack.yaml  expected.json  fix.md
 tests/           incl. tests/ci_cases/: small failures the signature tests reproduce

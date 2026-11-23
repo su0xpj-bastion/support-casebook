@@ -42,9 +42,11 @@ DATA_TESTS: list[tuple[str, str]] = [
 ]
 # Files that no test reads.
 NO_TESTS = ["docs/*", "README.md", "runbooks/*", "real/*", "cases/sims/*", "cases/examples/*",
-            "cases/README.md", "tools/*", ".gitignore", "ci/*"]
+            "cases/README.md", "tools/*", ".gitignore", "ci/*",
+            "suites/*", ".github/workflows/suite-*"]   # suites have their own workflows
 # Files that can change any test's behaviour.
-RUN_ALL = ["requirements.txt", "pyproject.toml", "tests/conftest.py", ".github/*", "casebook/ci/pytest_plugin.py"]
+RUN_ALL = ["requirements.txt", "pyproject.toml", "tests/conftest.py", ".github/workflows/ci*.yml",
+           "casebook/ci/pytest_plugin.py"]
 # Test files that iterate over every pack.
 ALL_PACK_TESTS = ["tests/test_triage.py"]
 

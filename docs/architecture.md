@@ -139,6 +139,7 @@ Nothing is deployed. Two GitHub Actions workflows run the code:
 |---|---|---|
 | [`ci.yml`](../.github/workflows/ci.yml) | every push and PR | macOS, Python 3.14, Node 22: `python -m casebook ci test` (change-based selection on PRs, full suite on pushes, reruns and failure signatures), doc-link check, test-matrix freshness check |
 | [`ci-shards.yml`](../.github/workflows/ci-shards.yml) | push to main, manual | The same suite as a 3-job matrix from `ci shard --matrix` |
+| `suite-<name>.yml` (6) | push or PR touching `suites/<name>/` | Each suite's own tests (and fault matrix or demo run) in its folder; `ci.yml` and `ci-shards.yml` ignore `suites/` |
 | [`doc-drift.yml`](../.github/workflows/doc-drift.yml) | weekly (Mon 06:17 UTC) or manual | `python tools/doc_links.py --check`: fetches every doc URL cited by a pack |
 
 See [design decisions](#design-decisions-and-trade-offs) below and [workflows.md](workflows.md) for call sequences.

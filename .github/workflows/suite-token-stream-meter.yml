@@ -1,0 +1,23 @@
+name: suite-token-stream-meter
+on:
+  push:
+    paths:
+      - "suites/token-stream-meter/**"
+      - ".github/workflows/suite-token-stream-meter.yml"
+  pull_request:
+    paths:
+      - "suites/token-stream-meter/**"
+      - ".github/workflows/suite-token-stream-meter.yml"
+defaults:
+  run:
+    working-directory: suites/token-stream-meter
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -v

@@ -1,0 +1,57 @@
+name: suite-coding-agent-qa
+on:
+  push:
+    paths:
+      - "suites/coding-agent-qa/**"
+      - ".github/workflows/suite-coding-agent-qa.yml"
+  pull_request:
+    paths:
+      - "suites/coding-agent-qa/**"
+      - ".github/workflows/suite-coding-agent-qa.yml"
+  workflow_dispatch:
+    inputs:
+      agent:
+        description: "live agent from agents.json (claude-code | codex | muse-code)"
+        default: "claude-code"
+      repeats:
+        default: "3"
+defaults:
+  run:
+    working-directory: suites/coding-agent-qa
+jobs:
+  mock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: tests (8 tasks validated, 11 agent faults pinned, playbooks, doctor)
+        run: python -m pytest -v
+      - name: healthy mock agent vs baseline, 3 repeats
+        run: python -m caq run --repeats 3 --out reports/mock
+      - name: environment snapshot (what a support ticket would carry)
+        run: python -m caq doctor >> "$GITHUB_STEP_SUMMARY"
+  live:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: install the agent CLI (configure in this step before the first run)
+        run: echo "install ${{ inputs.agent }} here; see docs/LIVE.md"
+      - name: live run
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          MODEL_API_KEY: ${{ secrets.MODEL_API_KEY }}
+        run: python -m caq run --agent "${{ inputs.agent }}" --repeats "${{ inputs.repeats }}" --out reports/live
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-report
+          path: suites/coding-agent-qa/reports/live/

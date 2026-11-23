@@ -1,0 +1,59 @@
+{
+  "close_incident": {
+    "required": [
+      "id",
+      "resolution"
+    ],
+    "props": {
+      "id": "string",
+      "resolution": "string"
+    }
+  },
+  "create_ticket": {
+    "required": [
+      "severity",
+      "title"
+    ],
+    "props": {
+      "body": "string",
+      "severity": "string",
+      "title": "string"
+    }
+  },
+  "export_report": {
+    "required": [
+      "days"
+    ],
+    "props": {
+      "days": "integer"
+    }
+  },
+  "get_incident": {
+    "required": [
+      "id"
+    ],
+    "props": {
+      "id": "string"
+    }
+  },
+  "read_attachment": {
+    "required": [
+      "incident_id",
+      "name"
+    ],
+    "props": {
+      "incident_id": "string",
+      "name": "string"
+    }
+  },
+  "search_incidents": {
+    "required": [
+      "query"
+    ],
+    "props": {
+      "cursor": "string",
+      "limit": "integer",
+      "query": "string"
+    }
+  }
+}

@@ -37,10 +37,10 @@ Entry point: [`runner.run`](../casebook/ci/runner.py). On pull requests, `ci.yml
 | Changed file | Selects |
 |---|---|
 | A `casebook/` module | Every test file that imports it, directly or through other modules (AST import graph, including imports inside functions and package `__init__` files) |
-| `tests/conftest.py`, `requirements.txt`, `pyproject.toml`, `.github/*`, the pytest plugin | Everything |
+| `tests/conftest.py`, `requirements.txt`, `pyproject.toml`, `.github/workflows/ci*.yml`, the pytest plugin | Everything |
 | Data a module reads at runtime (`ts/`, the packet schema, dossiers, `triage/adversarial.yaml`) | Whatever that module would select (`DATA_DEPS`) |
 | One pack under `faults/` | Only the tests that name that pack, plus the tests that read every pack |
-| Docs, generated runbooks, reports, `tools/` | Nothing |
+| Docs, generated runbooks, reports, `tools/`, `suites/` (each suite has its own workflow) | Nothing |
 | Anything else | Everything |
 
 A test file depends on the conftest `mock` fixture's imports only if it uses the fixture; otherwise every change would select everything.

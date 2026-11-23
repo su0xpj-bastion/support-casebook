@@ -1,0 +1,8 @@
+{
+  "id": "invoice-rounding",
+  "issue": "Invoice totals are off by a cent: `total([('a', '0.10', 3)])` gives `0.30000000000000004`. Money must use `Decimal` and round half-up to cents, returning a `Decimal`. Fix `invoice.py`.",
+  "allowed_files": [
+    "invoice.py"
+  ],
+  "module": "invoice.py"
+}

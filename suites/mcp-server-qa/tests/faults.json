@@ -1,0 +1,95 @@
+{
+  "_note": "Each fault is a deliberate bug in src/server.ts or src/http.ts (MCP_FAULTS). caught_by pins the exact tests that must fail; scripts/fault-matrix.ts enforces it.",
+  "faults": {
+    "lenient_schema": {
+      "what": "input schemas accept anything, so bad arguments reach the handlers",
+      "caught_by": [
+        "protocol.test.ts: invalid input to create_ticket is rejected with an error: {\"title\":\"\",\"severity\":\"S9\"}",
+        "protocol.test.ts: invalid input to search_incidents is rejected with an error: {\"query\":\"x\",\"limit\":\"ten\"}",
+        "protocol.test.ts: invalid input to search_incidents is rejected with an error: {\"query\":123}",
+        "protocol.test.ts: invalid input to search_incidents is rejected with an error: {}",
+        "robustness.test.ts: schema drift tool schemas are backward compatible with the committed baseline"
+      ]
+    },
+    "error_as_success": {
+      "what": "errors come back with isError: false",
+      "caught_by": [
+        "protocol.test.ts: a missing record is an error result, not a success",
+        "security.test.ts: data handling path traversal in read_attachment is refused: ..%2F..%2Fetc%2Fpasswd",
+        "security.test.ts: data handling path traversal in read_attachment is refused: ../../../../etc/passwd",
+        "security.test.ts: data handling path traversal in read_attachment is refused: /etc/passwd",
+        "security.test.ts: data handling path traversal in read_attachment is refused: timeline.md/../../secrets"
+      ]
+    },
+    "unbounded_results": {
+      "what": "search ignores the page size and returns every match",
+      "caught_by": [
+        "protocol.test.ts: results are paged: at most 50 per call, cursor walks every match exactly once",
+        "protocol.test.ts: structured output matches the declared output schema"
+      ]
+    },
+    "missing_annotations": {
+      "what": "no readOnly / destructive hints on tools",
+      "caught_by": [
+        "protocol.test.ts: tool annotations tell clients which tools are read-only and which are destructive"
+      ]
+    },
+    "leaks_secrets": {
+      "what": "credentials in incident text are not redacted",
+      "caught_by": [
+        "security.test.ts: data handling credentials inside incident text are redacted in tool results and resources"
+      ]
+    },
+    "path_traversal": {
+      "what": "read_attachment follows ../ paths",
+      "caught_by": [
+        "security.test.ts: data handling path traversal in read_attachment is refused: ..%2F..%2Fetc%2Fpasswd",
+        "security.test.ts: data handling path traversal in read_attachment is refused: ../../../../etc/passwd",
+        "security.test.ts: data handling path traversal in read_attachment is refused: timeline.md/../../secrets"
+      ]
+    },
+    "poisoned_description": {
+      "what": "a tool description carries hidden instructions for the model",
+      "caught_by": [
+        "security.test.ts: data handling tool descriptions carry no hidden instructions (tool-poisoning lint)"
+      ]
+    },
+    "no_auth": {
+      "what": "the HTTP endpoint accepts requests without a token",
+      "caught_by": [
+        "security.test.ts: auth (HTTP) an unauthenticated MCP client cannot connect",
+        "security.test.ts: auth (HTTP) no token: 401 with a WWW-Authenticate challenge",
+        "security.test.ts: auth (HTTP) wrong token: 401, and the token is not echoed back"
+      ]
+    },
+    "token_in_error": {
+      "what": "the 401 response echoes the caller's token",
+      "caught_by": [
+        "security.test.ts: auth (HTTP) wrong token: 401, and the token is not echoed back"
+      ]
+    },
+    "ignores_cancel": {
+      "what": "a cancelled export keeps running on the server",
+      "caught_by": [
+        "robustness.test.ts: long-running tools cancelling export_report stops the work on the server"
+      ]
+    },
+    "crosstalk": {
+      "what": "concurrent get_incident calls share one variable",
+      "caught_by": [
+        "security.test.ts: isolation 20 concurrent calls each get their own incident (http)",
+        "security.test.ts: isolation 20 concurrent calls each get their own incident (stdio)"
+      ]
+    },
+    "schema_breaking_change": {
+      "what": "get_incident gains a new required parameter",
+      "caught_by": [
+        "protocol.test.ts: a missing record is an error result, not a success",
+        "robustness.test.ts: schema drift tool schemas are backward compatible with the committed baseline",
+        "security.test.ts: data handling credentials inside incident text are redacted in tool results and resources",
+        "security.test.ts: isolation 20 concurrent calls each get their own incident (http)",
+        "security.test.ts: isolation 20 concurrent calls each get their own incident (stdio)"
+      ]
+    }
+  }
+}

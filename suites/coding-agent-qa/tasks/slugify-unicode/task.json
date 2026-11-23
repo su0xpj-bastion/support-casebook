@@ -1,0 +1,8 @@
+{
+  "id": "slugify-unicode",
+  "issue": "`slugify('Caf\u00e9 D\u00e9j\u00e0 Vu!')` returns `'caf-d-j-vu'`: accented letters are dropped instead of transliterated. Expected `'cafe-deja-vu'`. Slugs must be lowercase ASCII, words joined by single hyphens, no leading or trailing hyphen. Fix `slug.py`.",
+  "allowed_files": [
+    "slug.py"
+  ],
+  "module": "slug.py"
+}

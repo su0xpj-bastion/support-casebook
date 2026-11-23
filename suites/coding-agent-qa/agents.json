@@ -1,0 +1,6 @@
+{
+  "_note": "Live agents run headless in a throwaway git repo. {prompt} is replaced with the task prompt. Check each command against the CLI's own --help before the first live run; flags change between releases.",
+  "claude-code": {"command": "claude -p {prompt} --permission-mode acceptEdits --allowedTools Bash(python -m pytest:*) Read Edit Write Glob Grep", "budget_s": 600},
+  "codex": {"command": "codex exec --full-auto {prompt}", "budget_s": 600},
+  "muse-code": {"command": "muse -p {prompt}", "budget_s": 600, "_verify": "Confirm Muse Code's non-interactive flag on dev.meta.ai before the first run."}
+}

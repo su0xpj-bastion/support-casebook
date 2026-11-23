@@ -1,0 +1,8 @@
+{
+  "id": "duration-parse",
+  "issue": "`parse_duration('1h30m')` returns 3630 instead of 5400 seconds: minutes are treated as seconds. It should accept any combination of `h`, `m`, `s` in that order and reject anything else with ValueError. Fix `duration.py`.",
+  "allowed_files": [
+    "duration.py"
+  ],
+  "module": "duration.py"
+}
