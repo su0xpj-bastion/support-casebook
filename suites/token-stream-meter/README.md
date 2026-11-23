@@ -37,6 +37,6 @@ The OpenAI client and `time.perf_counter` are both faked, so every timing assert
 
 ## Where this stops
 
-- One request, one prompt. For percentiles, concurrency and SLO gates see [inference-platform-qa](https://github.com/su0xpj-bastion/inference-platform-qa) and [llm-serving-validation](https://github.com/su0xpj-bastion/llm-serving-validation).
-- Client-side wall clock: network time is inside TTFT. Server-side timing needs a provider that returns it (for example Cerebras `time_info`, see [inference-endpoint-scenarios](https://github.com/su0xpj-bastion/inference-endpoint-scenarios)).
+- One request, one prompt. For percentiles, concurrency and SLO gates see [inference-platform-qa](https://github.com/su0xpj-bastion/inference-qa-lab/tree/main/inference-platform-qa) and [llm-serving-validation](https://github.com/su0xpj-bastion/inference-qa-lab/tree/main/llm-serving-validation).
+- Client-side wall clock: network time is inside TTFT. Server-side timing needs a provider that returns it (for example Cerebras `time_info`, see [inference-endpoint-scenarios](https://github.com/su0xpj-bastion/inference-qa-lab/tree/main/inference-endpoint-scenarios)).
 - Not yet run against the live API; all results so far come from the test suite.

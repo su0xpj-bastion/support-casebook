@@ -70,6 +70,6 @@ tests/              fault matrix (36 protocol x scenario cells per fault) + adap
 ## Where this stops
 
 - **Not yet run live.** Model behaviour (does it resist the injection, route correctly, recover honestly) is only meaningful on real models; the mock proves the harness detects each failure, not how any provider behaves.
-- **Small samples.** One run per scenario. For a release gate on non-deterministic behaviour, repeat and use a statistical decision, as in [inference-endpoint-scenarios](https://github.com/su0xpj-bastion/inference-endpoint-scenarios).
+- **Small samples.** One run per scenario. For a release gate on non-deterministic behaviour, repeat and use a statistical decision, as in [inference-endpoint-scenarios](https://github.com/su0xpj-bastion/inference-qa-lab/tree/main/inference-endpoint-scenarios).
 - **Meta's Anthropic-compatible base URL** is to be confirmed from Meta's docs before the first live run (`_verify` in `providers.json`).
 - **Not covered:** hosted tools (web search, code execution, computer use), the Agents API / Managed Agents runtimes, MCP (see mcp-server-qa), audio and images.
