@@ -12,6 +12,7 @@
 | Retry storm (SIM-2) | naive retries **~10×** the requests and never recover; SDK default ~1.75×; retry budget ~1.04× and recovers first |
 | Silent degradation (SIM-3) | at 0.18% of traffic, hourly canaries catch it **0%** of the time; probing 10% of sessions catches it 90% |
 | Triage eval | rules first, LLM fallback behind a guard: **0 false "retry" verdicts**, 0 secret leaks ([report](triage/eval/REPORT.md)) |
+| SQL investigation | cases, triage answers, live captures and recorded request traces in SQLite; 7 saved queries answer support questions (which 429s need different fixes, wasted retries, every request id behind one call) and reproduce the published numbers ([`sql/`](sql/)) |
 | Real findings | 4 EvalPlus issues, 2 Firefox bugs, Ollama silent truncation, 13 doc/SDK mismatches ([`real/`](real/)) |
 | Suites | 6 more projects in [`suites/`](suites/), each with its own tests and CI: coding-agent grading, MCP server safety, agent API conformance, deep-research eval, streaming latency, support-ticket metrics |
 | CI tooling | change-based test selection (12/12 injected faults caught, 0 misses), flake detection and quarantine, duration-based sharding (3 shards: 3 m 12 s vs 4 m 42 s), 10 failure signatures each reproduced, a local merge queue with bisection ([`docs/ci.md`](docs/ci.md)) |
@@ -19,7 +20,7 @@
 ```bash
 uv venv -p python3.14 .venv && uv pip install -p .venv -r requirements.txt && (cd ts && npm ci)
 .venv/bin/python -m casebook repro AN-01        # SDK default sends 3 requests, the evidence-aware policy sends 1
-.venv/bin/python -m pytest -q                   # 652 tests, no network, ~4 min
+.venv/bin/python -m pytest -q                   # 660 tests, no network, ~4 min
 ```
 
 ## How it works
@@ -268,6 +269,37 @@ Each sim injects a fault, drives real SDK clients, measures the result, and gene
 
 An LLM alone is unsafe at this size; the guard holds false "retry" at 0 for both. Combined output goes to a human as a draft; only rules-only answers go to customers automatically.
 
+## Investigating with SQL
+
+`python -m casebook sql load --repro` loads the cases, the 260 triage tickets and every model's answers, the live captures, and a fresh repro of every error case against the mock (each HTTP request with its request id and the SDK's retry count) into SQLite. Saved queries in [`sql/queries/`](sql/queries/) answer the questions support asks first:
+
+```text
+$ python -m casebook sql query wasted_retries
+pack   status  error_code                         sdk_default_requests  policy_requests  wasted
+AN-01  429     enforced_spend_limit_reached       3                     1                2
+OA-04  429     credit_balance_exhausted           3                     1                2
+OA-05  429     project_spend_limit_exceeded       3                     1                2
+OA-06  429     organization_usage_limit_exceeded  3                     1                2
+
+$ python -m casebook sql query request_trace --param pack=AN-11
+mode         seq  path          request_id                    retry_count
+sdk-default  1    /v1/messages  req_011fEGmKKrf97m3yJYKQeXVU  0
+sdk-default  2    /v1/messages  req_011e9ZL2EKy6JnhoIA57sdPO  1
+sdk-default  3    /v1/messages  req_011ZrVRceKZzLENHslnLvSpP  2
+```
+
+| Query | Question it answers |
+|---|---|
+| `same_status_different_fix` | Which HTTP statuses hide cases that need different fixes (the ten 429s split into 8 different verdicts) |
+| `wasted_retries` | Requests SDK default retries send for failures retrying can't fix |
+| `request_trace` | Every request behind one user action, with the request id each attempt got |
+| `missing_request_id` | Failures that leave the customer no request id to quote |
+| `triage_false_retry` | Per model and mode: wrong "retry" advice, wrong answers, model errors, leaks |
+| `triage_wrong_by_family` | Where an LLM-alone triage goes wrong, by error family and evidence level |
+| `live_vs_expected` | Real-API captures: fields matched and whether the server said to retry |
+
+`tests/test_sql.py` checks that the queries reproduce the published triage numbers and the repro results.
+
 ## Live captures
 
 `python -m casebook live <packs> --yes` sends the real request and writes `faults/.../live/<date>-python.json`: status, redacted headers, body, SDK versions, and a diff against `expected.json`.
@@ -344,6 +376,7 @@ uv venv -p python3.14 .venv && uv pip install -p .venv -r requirements.txt
 .venv/bin/python -m casebook redact ticket.txt --provider anthropic   # redact + packet + verdict
 .venv/bin/python -m casebook.mockserver --port 8787 # header X-Casebook-Pack selects a fault
 .venv/bin/python -m casebook ci select --base origin/main --explain   # tests the change can affect, and why
+.venv/bin/python -m casebook sql load --repro && .venv/bin/python -m casebook sql query wasted_retries
 .venv/bin/python -m casebook ci test --base origin/main               # run them, rerun failures, classify the rest
 ```
 
@@ -368,9 +401,11 @@ casebook/
   client_lab/    Claude Code + Codex CLIs, TLS CA, OTLP collector
   mcp_lab/       MCP servers/clients (Python + TS), proxy, OAuth stand-in
   live.py        real-API captures + diff vs expected.json
+  logdb.py       loads cases, triage answers, captures and request traces into SQLite for sql/queries/
   ci/            test selection, flake history + quarantine, sharding, failure signatures, merge queue
 suites/          six self-contained projects, each with its own tests and workflow
 ci/              quarantine list, recorded durations, experiment reports
+sql/             schema and saved support queries
 faults/<provider>/<ID>-<slug>/  pack.yaml  expected.json  fix.md
 tests/           incl. tests/ci_cases/: small failures the signature tests reproduce
 ```

@@ -108,6 +108,31 @@ def _cmd_redact(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_sql_load(args: argparse.Namespace) -> int:
+    from pathlib import Path
+
+    from casebook import logdb
+    db = Path(args.db) if args.db else logdb.DEFAULT_DB
+    print(json.dumps(logdb.load(db, with_repro=args.repro)), "->", db)
+    return 0
+
+
+def _cmd_sql_list(_: argparse.Namespace) -> int:
+    from casebook import logdb
+    for name in logdb.saved_queries():
+        print(f"{name:28} {logdb.describe(name)}")
+    return 0
+
+
+def _cmd_sql_query(args: argparse.Namespace) -> int:
+    from pathlib import Path
+
+    from casebook import logdb
+    params = dict(p.split("=", 1) for p in args.param)
+    print(logdb.table(logdb.run_query(args.name, params, Path(args.db) if args.db else logdb.DEFAULT_DB)))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="casebook")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -136,5 +161,17 @@ def main(argv: list[str] | None = None) -> int:
     d.set_defaults(fn=_cmd_redact)
     from casebook.ci.cli import add_parser as _add_ci
     _add_ci(sub)
+    sq = sub.add_parser("sql", help="load evidence into SQLite and run saved support queries")
+    sqs = sq.add_subparsers(dest="sql_cmd", required=True)
+    sl = sqs.add_parser("load")
+    sl.add_argument("--repro", action="store_true", help="also run every error pack against the mock and record requests")
+    sl.add_argument("--db")
+    sl.set_defaults(fn=_cmd_sql_load)
+    sqs.add_parser("list").set_defaults(fn=_cmd_sql_list)
+    sr = sqs.add_parser("query")
+    sr.add_argument("name")
+    sr.add_argument("--param", action="append", default=[], help="name=value for :name in the query")
+    sr.add_argument("--db")
+    sr.set_defaults(fn=_cmd_sql_query)
     args = ap.parse_args(argv)
     return args.fn(args)

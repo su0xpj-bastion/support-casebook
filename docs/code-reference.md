@@ -151,6 +151,10 @@ All scenario functions take the mock server (or nothing) and return a `dict` wit
 | [`identity/scenarios`](../casebook/identity/scenarios.py) | `id01`…`id07`, `an32`…`an38`, `oa30`…`oa41` | [`StandInIdP`](../casebook/identity/idp.py#L26), the SP ([`identity/sp.py`](../casebook/identity/sp.py)), [`ScimStore`](../casebook/identity/scim.py#L13), [`AuthorizationServer`](../casebook/identity/oauth.py#L34), [`WifProvider`](../casebook/identity/wif.py#L52) |
 | [`sims`](../casebook/sims/) | `s1_outage.run`, `s2_retry_storm.run`, `s3_silent_degradation.run`, `artifacts.run_all` | See [workflow 5](workflows.md#5-incident-simulation-and-generated-updates) |
 
+## SQL investigation: [casebook/logdb.py](../casebook/logdb.py)
+
+`load` builds a SQLite database from the packs, the triage dataset and predictions, the live captures and (with `--repro`) a recorded run of every error pack against the mock; `run_query` executes a saved query from `sql/queries/` with named parameters. Called by `python -m casebook sql`; tested in `tests/test_sql.py`.
+
 ## CI tooling
 
 Detailed in [ci.md](ci.md); tests in `tests/test_ci.py`.

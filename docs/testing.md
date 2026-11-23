@@ -22,8 +22,9 @@ Test status is recorded by CI ([`ci.yml`](../.github/workflows/ci.yml)) on every
 | Concurrency / failure injection | Incident sims with 10–20 concurrent SDK clients | `test_sims.py` | 4 |
 | Triage | Dataset shape, family split, rules gates, LLM guard, committed report gates | `test_triage.py` | 11 |
 | Evidence files | Committed live captures are well-formed and contain no secret | `test_live_captures.py` | 5 |
-| CI tooling | Selection (incl. a real-import check per test file), quarantine, history plugin, sharding, signatures against reproduced failures, merge queue on real git, reruns | `test_ci.py`, `test_ci_graph.py` | 50 |
-| | | **Total** | **652** |
+| CI tooling | Selection (incl. a real-import check per test file), quarantine, history plugin, sharding, signatures against reproduced failures, merge queue on real git, reruns | `test_ci.py`, `test_ci_graph.py` | 51 |
+| SQL investigation | Saved queries reproduce the published triage numbers and repro results | `test_sql.py` | 7 |
+| | | **Total** | **660** |
 
 The per-pack listing is generated: [test-matrix.md](test-matrix.md). Every one of the 101 packs has at least one behavioural test.
 

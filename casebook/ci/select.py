@@ -33,6 +33,8 @@ DATA_DEPS: list[tuple[str, str]] = [
     ("cases/dossiers/*", "casebook.exposure"),
     ("cases/samples/*", "casebook.exposure"),
     ("triage/adversarial.yaml", "casebook.triage.dataset"),
+    ("sql/*", "casebook.logdb"),
+    ("triage/eval/*", "casebook.logdb"),
 ]
 # Data read directly by a test file.
 DATA_TESTS: list[tuple[str, str]] = [
